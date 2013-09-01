@@ -1,14 +1,5 @@
 .nav-bg
-  %nav
-    .title
-      = link_to 'Nicely', root_path, class: 'bold-links'
-    %ul.nav-links
-      %li
-        = link_to 'Contact', root_path, class: 'bold-links'
-      %li
-        = link_to 'About', root_path, class: 'bold-links'
-      %li
-        = link_to 'Login', root_path, class: 'bold-links'
+  = render partial: 'pages/nav'
 .content
   .landing
     .text

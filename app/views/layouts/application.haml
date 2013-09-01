@@ -8,6 +8,12 @@
   = csrf_meta_tags
   %body
     .page
+      - if notice
+        %p
+          = notice
+      - if alert
+        %p
+          = alert
       = yield
 
     - content_for?(:footer) ? yield(:footer) : render(:partial => 'layouts/footer')
