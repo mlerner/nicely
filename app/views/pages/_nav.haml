@@ -1,0 +1,14 @@
+%nav
+  .title
+    = link_to 'Nicely', root_path, class: 'bold-links'
+  %ul.nav-links
+    %li
+      = link_to 'Contact', root_path, class: 'bold-links'
+    %li
+      = link_to 'About', root_path, class: 'bold-links'
+    - if user_signed_in?
+      %li
+        = link_to 'Logout', destroy_user_session_path, class: 'bold-links', method: :delete
+    - else
+      %li
+        = link_to 'Login', new_user_session_path, class: 'bold-links'
