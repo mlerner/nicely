@@ -1,4 +1,4 @@
-Goodcode::Application.routes.draw do
+Nicely::Application.routes.draw do
 
   root to: 'pages#index'
 
