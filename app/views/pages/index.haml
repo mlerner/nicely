@@ -1,18 +1,20 @@
 .nav-bg
   %nav
     .title
-      = link_to 'Goodcode', root_path
-    %ul
+      = link_to 'Nicely', root_path, class: 'bold-links'
+    %ul.nav-links
       %li
-        = link_to 'Contact', root_path
+        = link_to 'Contact', root_path, class: 'bold-links'
       %li
-        = link_to 'About', root_path
+        = link_to 'About', root_path, class: 'bold-links'
+      %li
+        = link_to 'Login', root_path, class: 'bold-links'
 .content
   .landing
     .text
-      %h1 Change the world with code.
-      %p Work on software projects with serious impact.
-  %section.details
-    %h1 The GoodCode Fellowship
+      %h3 Making the world a better place, one favor at a time.
+      %p
+        = link_to 'Sign up', root_path, class: 'bold-links white'
+
 
 
