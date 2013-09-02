@@ -1,11 +1,11 @@
-.nav-bg
-  = render partial: 'pages/nav'
 .content
-  .landing
-    .text
-      %h3 Making the world a better place, one favor at a time.
-      %p
-        = link_to 'Sign up', root_path, class: 'bold-links white'
+  - if user_signed_in?
+  - else
+    .landing
+      .text
+        %h3 Making the world a better place, one favor at a time.
+        %p
+          = link_to 'Sign up', root_path, class: 'button'
 
 
 

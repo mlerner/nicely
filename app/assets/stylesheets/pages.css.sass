@@ -21,6 +21,44 @@ body
   text-decoration: none
   font-style: italic
   font-family: "NHaasGroteskDSW01-65Md", sans-serif
+  position: relative
+  display: inline-block
+  margin: 0px 25px
+  outline: none
+  text-shadow: 0 0 1px rgba(255,255,255,0.3)
+  font-size: 1.35em
+
+nav
+  a:focus::after, a:hover::after
+    opacity: 1
+    -webkit-transform: translateY(0px)
+    -moz-transform: translateY(0px)
+    transform: translateY(0px)
+  a::after
+    position: absolute
+    top: 100%
+    left: 0
+    width: 100%
+    height: 4px
+    background: $good-color
+    content: ''
+    opacity: 0
+    -webkit-transition: opacity 0.3s, -webkit-transform 0.3s
+    -moz-transition: opacity 0.3s, -moz-transform 0.3s
+    transition: opacity 0.3s, transform 0.3s
+    -webkit-transform: translateY(10px)
+    -moz-transform: translateY(10px)
+    transform: translateY(10px)
+
+.logo
+  font-family: "NHaasGroteskDSW01-65Md", sans-serif
+  font-size: 30px
+  color: $good-color
+  letter-spacing: 0
+  line-height: 40px
+  text-decoration: none
+  &:hover
+    color: #ffffff
 
 .white
   color: $white
@@ -29,37 +67,39 @@ body
   height: 100%
   header, footer
     clear: both
-  .nav-bg
+  nav.nav-bg
     background: #ffffff
-    nav
-      @include container
-      .title
-        @include span-columns(3,12)
-        padding: 20px 0px
-        a
-          font-family: "NHaasGroteskDSW01-65Md", sans-serif
-          font-size: 30px
-          color: $good-color
-          letter-spacing: 0
-          line-height: 40px
-          text-decoration: none
-          &:hover
-            color: #ffffff
-      ul
-        @include span-columns(6 omega,9)
-        li
-          float: right
-          margin: 0px 30px 0px 0px
-          text-align: left
-          display: inline-block
+    @include container
+    .centered-title
+      @include span-columns(12,12)
+      @include squish(4,4)
+      h3
+        color: $good-color
+    .title
+      @include span-columns(3,12)
+      padding: 20px 0px
+    ul
+      @include span-columns(6 omega,9)
+      padding-top: 7.5px
+      li
+        float: right
+        text-align: left
+        display: inline-block
+  .devise
+    @include container
+    padding-top: 50px
+    .centered-form
+      @include span-columns(4,12)
+      @include squish(4,4)
+      background-color: $white
+      color: $good-color
+      border: 1px solid $good-color
+      padding: 30px
+      border-radius: 3px
+      h3
+        text-align: center
 
   .content
-    section
-      @include span-columns(12,12)
-      text-align: center
-      padding: 100px 0
-      border-bottom: 1px solid #eee
-      height: 500px
     .landing
       background: $good-color
       .text
@@ -70,8 +110,6 @@ body
         p
           font-size: 24px
           font-weight: 400
-    .details
-      padding-top: 100px
 
 
     // main content spans 6 of those 9 columns.

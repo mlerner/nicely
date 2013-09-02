@@ -1,14 +1,16 @@
-%nav
+%nav.nav-bg
   .title
-    = link_to 'Nicely', root_path, class: 'bold-links'
+    = link_to 'Nicely', root_path, class: 'logo'
   %ul.nav-links
     %li
-      = link_to 'Contact', root_path, class: 'bold-links'
+      = link_to 'Browse', root_path, class: 'bold-links'
     %li
-      = link_to 'About', root_path, class: 'bold-links'
+      = link_to 'Search', root_path, class: 'bold-links'
     - if user_signed_in?
       %li
         = link_to 'Logout', destroy_user_session_path, class: 'bold-links', method: :delete
+      %li.underline
+        = link_to 'New Task', root_path, class: 'bold-links'
     - else
       %li
         = link_to 'Login', new_user_session_path, class: 'bold-links'

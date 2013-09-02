@@ -1,19 +1,11 @@
 %html{ xmlns: "http://www.w3.org/TR/html5", "xmlns:og" => "http://opengraphprotocol.org/schema/", "xmlns:fb" => "http://www.facebook.com/2008/fbml", lang: 'en'}
-  %head
-    %link{href: 'http://fonts.googleapis.com/css?family=Lato', rel: 'stylesheet', type: 'text/css'}
-    %link{href: 'http://fonts.googleapis.com/css?family=Ovo', rel: 'stylesheet', type: 'text/css'}
-  %title Goodcode
-  = stylesheet_link_tag 'application', :media => 'all'
-  = javascript_include_tag 'application'
-  = csrf_meta_tags
+  = render partial: 'layouts/header'
   %body
     .page
-      - if notice
-        %p
-          = notice
-      - if alert
-        %p
-          = alert
-      = yield
+      - if devise_view?
+        = render partial: 'layouts/devise'
+      - else
+        = render partial: 'pages/body_content'
 
-    - content_for?(:footer) ? yield(:footer) : render(:partial => 'layouts/footer')
+
+    - content_for?(:footer) ? yield(:footer) : render(:partial => 'pages/footer')

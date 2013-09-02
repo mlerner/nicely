@@ -11,6 +11,7 @@
  *= require_self
  *= require_tree .
  */
+@import "pages"
 
 @font-face
   font-family: "proxima-nova"
@@ -105,17 +106,59 @@ p
   font-weight: normal
   font-style: normal
 
-.btn, button
+.button
+  -webkit-font-smoothing: antialiased
+  font-family: "proxima-nova", Proxima Nova, "Helvetica Neue", Helvetica, sans-serif
+  border-radius: 3px
+  background: #1cb568
+  color: #fff
+  font-weight: bold
+  font-size: 24px
   display: inline-block
-  padding: 6px 18px
-  background: #cf3059
-  color: #ffa1b9
-  font-family: inherit
-  font-size: 13px
-  line-height: 25px
-  font-weight: 700
-  text-decoration: none
-  border: none
-  border-radius: 5px
+  padding: 15px 25px
+  text-align: center
+  -webkit-user-select: none
+  -khtml-user-select: none
+  -moz-user-select: none
+  -ms-user-select: none
+  user-select: none
+  &:hover
+    background: #1ca655
+
+label
+  font-weight: bold
   cursor: pointer
+  color: $good-color
+  display: inline-block
+  margin: 15px 0 5px
+
+input[type="text"], input[type="email"], input[type="password"], input[type="url"]
+  display: block
+  width: 100%
+  border: 1px solid #e5e5e5
+  font-size: 18px
+  padding: 15px
+  border-radius: 3px
+  color: #555857
+
+input[type="submit"]
+  border: 0 none
+
+button, html input[type="button"], input[type="reset"], input[type="submit"]
+  -webkit-appearance: button
+  cursor: pointer
+
+button, input, select, textarea
+  font-family: inherit
+  font-size: 100%
+  margin: 0
+
+.signup-submit
+  margin-top: 39px
+  height: 51px
+  padding-top: 10px
+  width: 100%
+
+a
+  text-decoration: none
 
