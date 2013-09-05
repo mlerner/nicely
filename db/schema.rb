@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130905013043) do
+ActiveRecord::Schema.define(:version => 20130905160102) do
 
   create_table "assignees", :force => true do |t|
     t.integer  "user_id"
@@ -36,6 +36,8 @@ ActiveRecord::Schema.define(:version => 20130905013043) do
     t.integer  "user_id"
     t.spatial  "start_xy",    :limit => {:srid=>4326, :type=>"geometry"}
     t.spatial  "end_xy",      :limit => {:srid=>4326, :type=>"geometry"}
+    t.string   "start_loc"
+    t.string   "end_loc"
   end
 
   create_table "users", :force => true do |t|

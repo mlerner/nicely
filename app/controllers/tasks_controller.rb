@@ -5,7 +5,7 @@ class TasksController < ApplicationController
     @tasks = Task.all
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html { render layout: 'application', template: 'tasks/new' }
       format.json { render json: @tasks }
     end
   end
@@ -16,67 +16,69 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
 
     respond_to do |format|
-      format.html # show.html.erb
+      format.html {render 'tasks/show' }  # show.html.erb
       format.json { render json: @task }
     end
   end
 
-  # GET /users/new
-  # GET /users/new.json
+  # GET /tasks/new
+  # GET /tasks/new.json
   def new
-    @user = User.new
-
+    @task = Task.new
+    @back_path = request.referer || root_path
     respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @user }
+      format.html {
+        render layout: 'application', template: 'tasks/new'
+      }
+      format.json { render json: @task }
     end
   end
 
-  # GET /users/1/edit
+  # GET /tasks/1/edit
   def edit
     @user = User.find(params[:id])
   end
 
-  # POST /users
-  # POST /users.json
+  # POST /tasks
+  # POST /tasks.json
   def create
-    @user = User.new(params[:user])
+    @task = Task.new(params[:task])
 
     respond_to do |format|
-      if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
-        format.json { render json: @user, status: :created, location: @user }
+      if @task.save
+        format.html { redirect_to @task, notice: 'Task was successfully created.' }
+        format.json { render json: @task, status: :created, location: @task }
       else
         format.html { render action: "new" }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
+        format.json { render json: @task.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # PUT /users/1
-  # PUT /users/1.json
+  # PUT /tasks/1
+  # PUT /tasks/1.json
   def update
-    @user = User.find(params[:id])
+    @task = User.find(params[:id])
 
     respond_to do |format|
-      if @user.update_attributes(params[:user])
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
+      if @task.update_attributes(params[:user])
+        format.html { redirect_to @task, notice: 'Task was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
+        format.json { render json: @task.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # DELETE /users/1
-  # DELETE /users/1.json
+  # DELETE /tasks/1
+  # DELETE /tasks/1.json
   def destroy
-    @user = User.find(params[:id])
-    @user.destroy
+    @task = Task.find(params[:id])
+    @task.destroy
 
     respond_to do |format|
-      format.html { redirect_to users_url }
+      format.html { redirect_to task_url }
       format.json { head :no_content }
     end
   end
