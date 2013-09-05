@@ -97,17 +97,19 @@ nav
     height: 750px
     .page-form
       @include container
-      padding-top: 50px
+      padding-top: 20px
       .form-contents
-        padding: 20px
-        background-color: $white
-        @include span-columns(8,12)
-        @include squish(2,2)
         .text
-          @include span-columns(10,12)
-          @include pre(1)
-        .alerts
-          @include span-columns(1,12)
+          background-color: $white
+          padding: 20px
+          @include span-columns(5,12)
+        #map_container
+          @include span-columns(6 omega,12)
+          background-color: $white
+          position: fixed
+          #map_canvas
+            height: 450px
+            margin: 20px
         color: $good-color
         h3
           text-align: center
@@ -134,6 +136,8 @@ nav
     .secondary
       @include span-columns(3 omega,9)
 
+.pac-item
+  color: $good-color
 @media screen and (max-width: 480px)
   .nav-links
     display: none !important
