@@ -3,13 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 @import "susy"
-
-$total-columns  : 12             // a 12-column grid
-$column-width   : 4em            // each column is 4em wide
-$gutter-width   : 1em            // 1em gutters between columns
-$grid-padding   : $gutter-width  // grid-padding equal to gutters
-$good-color : #0e83cd
-$white : #ffffff
+@import "global"
 
 body
   background: $white
@@ -98,6 +92,26 @@ nav
       border-radius: 3px
       h3
         text-align: center
+  .form
+    background-color: $good-color
+    height: 750px
+    .page-form
+      @include container
+      padding-top: 50px
+      .form-contents
+        padding: 20px
+        background-color: $white
+        @include span-columns(8,12)
+        @include squish(2,2)
+        .text
+          @include span-columns(10,12)
+          @include pre(1)
+        .alerts
+          @include span-columns(1,12)
+        color: $good-color
+        h3
+          text-align: center
+
 
   .content
     .landing
