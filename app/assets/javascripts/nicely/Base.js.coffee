@@ -1,6 +1,6 @@
-module 'Kindly'
+module 'Nicely'
 
-Kindly.base_module = {
+Nicely.base_module = {
   initializeAttributes: (attributes) ->
     @initAttribute(k,v) for k,v of attributes
 
@@ -32,9 +32,9 @@ Kindly.base_module = {
     _.template(jq.html())
 }
 
-class Kindly.Base
+class Nicely.Base
   includeModule(@,Backbone.Events)
-  includeModule(@,Kindly.base_module)
+  includeModule(@,Nicely.base_module)
 
   constructor: ->
   $: (selector, scope) ->

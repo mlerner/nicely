@@ -1,6 +1,6 @@
 %nav.nav-bg
   .title
-    = link_to 'Nicely', root_path, class: 'logo'
+    = link_to 'Nicely', new_task_path, class: 'logo'
   %ul.nav-links
     %li
       = link_to 'Browse', root_path, class: 'bold-links'
@@ -10,7 +10,7 @@
       %li
         = link_to 'Logout', destroy_user_session_path, class: 'bold-links', method: :delete
       %li.underline
-        = link_to 'New Task', root_path, class: 'bold-links'
+        = link_to 'New Task', new_task_path, class: 'bold-links'
     - else
       %li
         = link_to 'Login', new_user_session_path, class: 'bold-links'

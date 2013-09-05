@@ -12,5 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require lib/manifest
-//= require_tree .
+//= require lib/underscore
+//= require lib/backbone
+//= require utils/coffee-util
