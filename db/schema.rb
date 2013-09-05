@@ -11,7 +11,32 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130901201654) do
+ActiveRecord::Schema.define(:version => 20130905013043) do
+
+  create_table "assignees", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "task_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "comments", :force => true do |t|
+    t.string   "text"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "tasks", :force => true do |t|
+    t.string   "title"
+    t.integer  "status"
+    t.string   "description"
+    t.datetime "created_at",                                              :null => false
+    t.datetime "updated_at",                                              :null => false
+    t.integer  "user_id"
+    t.spatial  "start_xy",    :limit => {:srid=>4326, :type=>"geometry"}
+    t.spatial  "end_xy",      :limit => {:srid=>4326, :type=>"geometry"}
+  end
 
   create_table "users", :force => true do |t|
     t.string   "name"
@@ -28,8 +53,5 @@ ActiveRecord::Schema.define(:version => 20130901201654) do
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
   end
-
-  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
-  add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
 
 end
