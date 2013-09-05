@@ -7,5 +7,7 @@
       - else
         = render partial: 'pages/body_content'
 
+    = yield :javascript
+
 
     - content_for?(:footer) ? yield(:footer) : render(:partial => 'pages/footer')
