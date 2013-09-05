@@ -12,5 +12,5 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require underscore
+//= require lib/manifest
 //= require_tree .
