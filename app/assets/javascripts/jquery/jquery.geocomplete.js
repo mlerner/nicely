@@ -39,6 +39,7 @@
     details: false,
     detailsAttribute: "name",
     location: false,
+    tag: '',
 
     mapOptions: {
       zoom: 14,
@@ -105,10 +106,7 @@
         return;
       }
 
-      this.map = new google.maps.Map(
-        $(this.options.map)[0],
-        this.options.mapOptions
-      );
+      this.map = this.options.map;
 
       // add click event listener on the map
       google.maps.event.addListener(
@@ -194,18 +192,23 @@
     // corresponding elements.
     initDetails: function(){
       if (!this.options.details){ return; }
-
       var $details = $(this.options.details),
         attribute = this.options.detailsAttribute,
-        details = {};
+        details = {},
+        tag = this.options.tag;
 
       function setDetail(value){
         details[value] = $details.find("[" +  attribute + "=" + value + "]");
       }
-
       $.each(componentTypes, function(index, key){
-        setDetail(key);
-        setDetail(key + "_short");
+
+        if (tag > 0) {
+            setDetail(tag + '_' + key);
+            setDetail(tag + '_' + key + "_short");
+        } else {
+            setDetail(key);
+            setDetail(key + "_short");
+        }
       });
 
       $.each(placesDetails, function(index, key){
@@ -309,7 +312,7 @@
 
       if (this.marker){
         this.marker.setPosition(geometry.location);
-        this.marker.setAnimation(this.options.markerOptions.animation);
+        //this.marker.setAnimation(this.options.markerOptions.animation);
       }
     },
 
@@ -366,6 +369,11 @@
         var value = data[key];
         this.setDetail($detail, value);
       }, this));
+      if (this.options.tag.length > 0){
+        var taggedInput = jQuery('#task_' + this.options.tag + '_xy');
+        taggedInput.val("POINT(" + data.lng + " " + data.lat + ")");
+      }
+
 
       this.data = data;
     },
@@ -446,7 +454,7 @@
         // Prevent against multiple instantiations.
         var instance = $.data(this, attribute);
         if (!instance) {
-          instance = new GeoComplete( this, options )
+          instance = new GeoComplete( this, options );
           $.data(this, attribute, instance);
         }
       });

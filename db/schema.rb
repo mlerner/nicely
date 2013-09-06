@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130905160102) do
+ActiveRecord::Schema.define(:version => 20130905190734) do
 
   create_table "assignees", :force => true do |t|
     t.integer  "user_id"
@@ -31,13 +31,16 @@ ActiveRecord::Schema.define(:version => 20130905160102) do
     t.string   "title"
     t.integer  "status"
     t.string   "description"
-    t.datetime "created_at",                                              :null => false
-    t.datetime "updated_at",                                              :null => false
+    t.datetime "created_at",                                                 :null => false
+    t.datetime "updated_at",                                                 :null => false
     t.integer  "user_id"
-    t.spatial  "start_xy",    :limit => {:srid=>4326, :type=>"geometry"}
-    t.spatial  "end_xy",      :limit => {:srid=>4326, :type=>"geometry"}
+    t.spatial  "start_xy",       :limit => {:srid=>4326, :type=>"geometry"}
+    t.spatial  "end_xy",         :limit => {:srid=>4326, :type=>"geometry"}
     t.string   "start_loc"
     t.string   "end_loc"
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.integer  "estimated_time"
   end
 
   create_table "users", :force => true do |t|
