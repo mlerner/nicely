@@ -5,9 +5,6 @@
 @import "susy"
 @import "global"
 
-body
-  background: $white
-
 .bold-links
   line-height: 40px
   font-size: 20px
@@ -17,10 +14,14 @@ body
   font-family: "NHaasGroteskDSW01-65Md", sans-serif
   position: relative
   display: inline-block
-  margin: 0px 25px
+  margin: 15px 25px
   outline: none
   text-shadow: 0 0 1px rgba(255,255,255,0.3)
   font-size: 1.35em
+
+.h2
+  font-size: 1.5em
+  font-weight: 400
 
 nav
   a:focus::after, a:hover::after
@@ -52,23 +53,20 @@ nav
   line-height: 40px
   text-decoration: none
   &:hover
-    color: #ffffff
-
-.white
-  color: $white
+    color: $hover-color
 
 .page
   height: 100%
   header, footer
     clear: both
   nav.nav-bg
-    background: #ffffff
+    background: $bg-color
     @include container
     .centered-title
       @include span-columns(12,12)
       @include squish(4,4)
       h3
-        color: $good-color
+        color: $bg-color
     .title
       @include span-columns(3,12)
       padding: 20px 0px
@@ -85,7 +83,7 @@ nav
     .centered-form
       @include span-columns(4,12)
       @include squish(4,4)
-      background-color: $white
+      background-color: $bg-color
       color: $good-color
       border: 1px solid $good-color
       padding: 30px
@@ -100,12 +98,12 @@ nav
       padding-top: 20px
       .form-contents
         .text
-          background-color: $white
+          background-color: $bg-color
           padding: 20px
-          @include span-columns(5,12)
+          @include span-columns(6,12)
         #map_container
-          @include span-columns(6 omega,12)
-          background-color: $white
+          @include span-columns(5 omega,12)
+          background-color: $bg-color
           position: fixed
           #map_canvas
             height: 450px
@@ -113,6 +111,80 @@ nav
         color: $good-color
         h3
           text-align: center
+
+  .task
+    height: 795px
+    .map
+      @include span-columns(9, 9)
+      height: 150px
+      background: $good-color
+      #map-canvas
+        height: 150px
+    .task-content
+      @include container
+      color: black
+      .left
+        @include span-columns(6, 9)
+        .title
+          color: $good-color
+        .details
+          .ago
+            color: darkgrey
+          .location
+            margin-bottom: 24px
+            ul
+              list-style: none
+              li
+                margin-bottom: 5px
+                .field
+                  color: $good-color
+          h3, p
+            word-wrap: break-word
+
+        .interact
+          height: 50px
+          ul
+            list-style: none
+            li
+              margin-right: 5px
+              display: inline
+        .comments
+          @include span-columns(6, 9)
+          height: 300px
+
+
+      .right
+        @include span-columns(3 omega, 9)
+        .share
+          ul
+            list-style: none
+            li
+              display: inline-block
+              margin: 0
+              float: left
+              a
+                display: inline-block
+                height: 64px
+                width: 64px
+                background-size: 64px 64px
+                background-position: center center
+                background-repeat: no-repeat
+                text-indent: -9999em
+
+        .nearby
+          margin-top: 20px
+          height: 300px
+          ul
+            list-style: none
+            margin: 0 0 5px
+            &:first-child
+              margin-top: 5px
+            li
+              margin: 0 -10px
+              overflow: hidden
+              padding: 5px 10px
+              position: relative
+              width: 290px
 
 
   .content
@@ -122,7 +194,7 @@ nav
         @include container
         padding-top: 2%
         text-align: center
-        height: 150px
+        height: 175px
         p
           font-size: 24px
           font-weight: 400
@@ -138,6 +210,18 @@ nav
 
 .pac-item
   color: $good-color
+
+.medium-padding
+  padding: 0.75em 0
+
+.grey
+  color: darkgrey
+
+.normal-link
+  &:hover
+    text-decoration: underline
+
+
 @media screen and (max-width: 480px)
   .nav-links
     display: none !important

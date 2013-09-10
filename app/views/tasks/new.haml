@@ -7,11 +7,11 @@
           %div
             = f.label :title
             %br/
-            = f.text_field :title, :autofocus => true
+            = f.text_field :title, autofocus: true, maxlength: 244
           %div
             = f.label :description
             %br/
-            = f.text_area :description
+            = f.text_area :description, maxlength: 50
           %div
             = f.label :start_loc, 'Start Location'
             %br/

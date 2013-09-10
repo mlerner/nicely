@@ -8,4 +8,10 @@ class Task < ActiveRecord::Base
   belongs_to :user
   has_one :assignee
   has_many :comments
+
+
+  def as_json(options)
+    result = super(options)
+    result
+  end
 end

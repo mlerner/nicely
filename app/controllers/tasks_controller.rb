@@ -1,4 +1,5 @@
 class TasksController < ApplicationController
+  before_filter :authenticate_user!
   # GET /tasks
   # GET /tasks.json
   def index
@@ -16,7 +17,7 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
 
     respond_to do |format|
-      format.html {render 'tasks/show' }  # show.html.erb
+      format.html {render layout: 'application', template: 'tasks/show' }  # show.html.erb
       format.json { render json: @task }
     end
   end
@@ -43,6 +44,7 @@ class TasksController < ApplicationController
   # POST /tasks.json
   def create
     @task = Task.new(params[:task])
+    @task.user = current_user
 
     respond_to do |format|
       if @task.save

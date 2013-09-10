@@ -82,20 +82,32 @@ body
   color: #fff
   font-family: 'proxima-nova',Proxima Nova,'Helvetica Neue',Helvetica,sans-serif
 
+body
+  background: $bg-color
+  font-size: 100%
+  line-height: 1.25
+  font-family: 'proxima-nova',Proxima Nova,'Helvetica Neue',Helvetica,sans-serif
+  color: #fff
+
+h1, h2, h3
+  margin-top: 0
+  margin-bottom: 0
+
 h1
-  font-size: 4rem
-  font-weight: 600
+  font-size: 1.33333em
+  padding: 1.25em 0
+  font-weight: 400
 
 h2
-  font-size: 50
+  font-size: 1.5em
+  padding: 1.45833em 0
+  font-weight: 600
 
 h3
-  font-size: 40
-  margin-bottom: .2em
-  margin-top: .2em
+  font-size: 1.75em
+  padding: 1.51786em 0
+  font-weight: 600
 
-p
-  font-size: 12
 
 @font-face
   font-family: 'LibreBaskervilleItalic'
@@ -125,6 +137,12 @@ p
   user-select: none
   &:hover
     background: #1ca655
+
+.report
+  background: red
+  &:hover
+    background: indianred
+
 
 label
   font-weight: bold
@@ -188,3 +206,21 @@ textarea
   border-radius: 3px
   color: #555857
 
+p
+  margin-bottom: 24px
+.facebook-icon
+  background-color: #3b5998
+  background-image: url(https://raw.github.com/danleech/simple-icons/master/icons/facebook/facebook-64.png)
+
+
+.twitter-icon
+  background-color: #00aced
+  background-image: url(https://raw.github.com/danleech/simple-icons/master/icons/twitter/twitter-64.png)
+
+.reddit-icon
+  background-color: #ff4500
+  background-image: url(https://raw.github.com/danleech/simple-icons/master/icons/reddit/reddit-64.png)
+
+*
+  padding: 0
+  margin: 0
