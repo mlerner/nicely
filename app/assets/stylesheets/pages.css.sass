@@ -47,13 +47,10 @@ nav
 
 .logo
   font-family: "NHaasGroteskDSW01-65Md", sans-serif
-  font-size: 30px
   color: $good-color
   letter-spacing: 0
-  line-height: 40px
+  margin-left: 0px
   text-decoration: none
-  &:hover
-    color: $hover-color
 
 .page
   height: 100%
@@ -69,14 +66,39 @@ nav
         color: $bg-color
     .title
       @include span-columns(3,12)
-      padding: 20px 0px
+      font-size: 1.5em
+      padding: 1.0em 0
+      font-weight: 600
     ul
       @include span-columns(6 omega,9)
-      padding-top: 7.5px
+      padding: 1.4em 0
       li
         float: right
         text-align: left
         display: inline-block
+  .browse
+    @include container
+    .refine
+      @include span-columns(12,12)
+    .sort-by
+      @include span-columns(6,12)
+    .timespan
+      @include span-columns(6 omega,12)
+    .refine, .sort-by, .timespan
+      color: $good-color
+      h3
+        padding: 0.75em 0
+      ul
+        list-style: none
+        li
+          margin: 0 20px 0 0
+          text-align: right
+          float: left
+          display: inline-block
+          a
+            .selected, &:hover
+              border-bottom: 3px solid
+
   .devise
     @include container
     padding-top: 50px
@@ -192,9 +214,8 @@ nav
       background: $good-color
       .text
         @include container
-        padding-top: 2%
         text-align: center
-        height: 175px
+        height: 200px
         p
           font-size: 24px
           font-weight: 400
@@ -220,6 +241,25 @@ nav
 .normal-link
   &:hover
     text-decoration: underline
+
+.helpers, .top, .today
+  color: $good-color
+  border-color: $good-color
+
+.askers, .recent, .week
+  color: #ff5b54
+  border-color: #ff5b54
+
+.tasks, .new, .month
+  color: #f1c40f
+  border-color: #f1c40f
+
+.selected
+  border-bottom: 3px solid
+
+.year
+  color: #27ae60
+  border-color: #27ae60
 
 
 @media screen and (max-width: 480px)
