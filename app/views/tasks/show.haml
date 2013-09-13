@@ -38,12 +38,7 @@
 
         %p{data: {p: @task.description }}
           = @task.description
-        .interact
-          %ul
-            %li
-              = link_to 'Offer Help', '#help', class: 'button', id: 'help-button'
-            %li
-              = link_to 'Report', '#report', class: 'button report', id: 'report-button'
+        = render partial: 'tasks/interact'
       .comments
     .right
       .status
@@ -51,22 +46,36 @@
           Nice people needed
         %p.grey.h2
           There are
-          = link_to '0', '#offers', class: 'normal-link', id: 'offers'
+          = link_to "#{@task.offers.count}", task_offers_url(@task), class: 'normal-link', id: 'offers'
           offers
         .share
           %h3.medium-padding
             Share to:
           %ul
             %li
-              = link_to 'Share to Facebook', '#', class: 'facebook-icon'
+              = link_to 'Share to Facebook', "https://www.facebook.com/sharer/sharer.php?u=#{CGI.escape(request.original_url)}",
+                class: 'facebook-icon', id: 'share-facebook'
             %li
-              = link_to 'Share to Twitter', '#', class: 'twitter-icon'
+              = link_to 'Share to Twitter', "https://twitter.com/intent/tweet?url=#{CGI.escape(request.original_url)}", class: 'twitter-icon', id: 'share-twitter'
             %li
-              = link_to 'Share to Reddit', '#', class: 'reddit-icon'
+              %script{type: 'text/javascript'}
+                reddit_url = 'http://www.reddit.com/r/WTF/comments/1m9nh4/im_a_director_of_an_afterschool_program_at_an/'
+              %script{type: 'text/javascript', src: 'http://www.reddit.com/static/button/button3.js'}
 
 = content_for :javascript do
   = javascript_include_tag 'nicely/tasks/manifest.js'
+= content_for :javascript do
   :javascript
     jQuery(document).ready(function($){
-      var taskView = new Nicely.Tasks.TaskView(#{@task.to_json}, { el: '.task'});
+      tasksController = new Nicely.Tasks.TasksController();
+      tasksController
+        .newOfferURL("#{task_offers_url(@task)}")
+        .newReportURL("#{task_reports_url(@task)}")
+      var taskView = new Nicely.Tasks.TaskView(tasksController, #{@task.to_json}, { el: '.task'});
     });
+  - if user_signed_in?
+    :javascript
+      tasksController.userID(#{current_user.id});
+
+
+

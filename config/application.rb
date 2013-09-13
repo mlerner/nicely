@@ -64,3 +64,6 @@ module Nicely
     config.assets.version = '1.0'
   end
 end
+
+require "#{Rails.root}/lib/rgeo"
+require "rgeo/geo_json"

@@ -1,5 +1,59 @@
 module 'Nicely'
 
+window.map_styles = [
+  {
+    stylers: [
+      {
+        'hue': "#3498db"
+      }
+    ]
+  },
+  {
+    "featureType": "labels",
+    "stylers": [
+      {
+        "visibility": "on"
+      }
+    ]
+  },
+  {
+    "featureType": "road",
+    "stylers": [
+      {
+        "visibility": "on"
+      },
+      {}
+    ]
+  },
+  {
+    "featureType": "water",
+    "stylers": [
+      {
+        "visibility": "on"
+      },
+      {}
+    ]
+  },
+  {
+    "featureType": "poi",
+    "stylers": [
+      {
+        "visibility": "on"
+      },
+      {}
+    ]
+  },
+  {
+    "featureType": "landscape",
+    "stylers": [
+      {
+        "visibility": "on"
+      },
+      {}
+    ]
+  }
+]
+
 Nicely.base_module = {
   initializeAttributes: (attributes) ->
     @initAttribute(k,v) for k,v of attributes

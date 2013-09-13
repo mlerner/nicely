@@ -2,81 +2,56 @@ module 'Nicely.Tasks'
 
 class Nicely.Tasks.TaskView extends Backbone.View
   events: {
-    'click #help-button': 'offerHelp',
-    'click #report-button': 'offerHelp'
+    'click #help-button.active': 'offerHelp',
+    'click #report-button.active': 'reportTask'
+    'click #share-facebook': 'openFacebookLink'
+
   }
 
-  constructor: (model, options) ->
+  constructor: (controller, model, options) ->
+    @tasksController = controller
     @model = new Nicely.Tasks.Task(model)
     console.log @model.toJSON()
-    super(options)
-    @mapStyles = [
-      {
-        stylers: [
-          {
-            'hue': "#3498db"
-          }
-        ]
-      },
-      {
-        "featureType": "labels",
-        "stylers": [
-          {
-            "visibility": "on"
-          }
-        ]
-      },
-      {
-        "featureType": "road",
-        "stylers": [
-          {
-            "visibility": "on"
-          },
-          {}
-        ]
-      },
-      {
-        "featureType": "water",
-        "stylers": [
-          {
-            "visibility": "on"
-          },
-          {}
-        ]
-      },
-      {
-        "featureType": "poi",
-        "stylers": [
-          {
-            "visibility": "on"
-          },
-          {}
-        ]
-      },
-      {
-        "featureType": "landscape",
-        "stylers": [
-          {
-            "visibility": "on"
-          },
-          {}
-        ]
-      }
-    ]
-    @styledMap = new google.maps.StyledMapType(@mapStyles,
-    {name: "Styled Map"})
-    @mapOptions = {
-      zoom: 11,
-      center: new google.maps.LatLng(55.6468, 37.581),
-      mapTypeControlOptions: {
-        mapTypeIds: [google.maps.MapTypeId.ROADMAP, 'map_style']
-      }
-    }
-    @map = map = new google.maps.Map(document.getElementById('map-canvas'),
-      @mapOptions)
-    @map.mapTypes.set('map_style', @styledMap);
-    @map.setMapTypeId('map_style')
+    @mapView = new Nicely.Tasks.MapView(@model.toJSON())
 
-  offerHelp: (event) ->
-    console.log 'offer received'
-    event.preventDefault()
+    @tasksController.on('offer:success', (data) =>
+      @handleOfferSuccess(data)
+    )
+    @tasksController.on('offer:failure', =>
+      @handleOfferFailure()
+    )
+
+    @tasksController.on('report:success', =>
+      @handleReportSuccess()
+    )
+
+    @tasksController.on('report:failure', =>
+      @handleReportFailure()
+    )
+    super(options)
+
+  offerHelp: ->
+    taskID = @model.get('id')
+    @$('#help-button').toggleClass('disabled')
+    @$('#help-button').html('Saving offer...')
+    @tasksController.newOffer(taskID)
+
+  reportTask: ->
+    taskID = @model.get('id')
+    @$('#report-button').toggleClass('disabled')
+    @$('#report-button').html('Reporting...')
+    @tasksController.reportTask(taskID)
+
+  handleOfferSuccess: ->
+    @$('#help-button').html('Help offered')
+
+  # TODO: Implement offer failure to save
+  handleOfferFailure: ->
+    @$('#report-button').toggleClass('disabled', false)
+
+  handleReportSuccess: ->
+    @$('#report-button').html('Reported')
+
+  handleReportFailure: ->
+    @$('#report-button').toggleClass('disabled', false)
+

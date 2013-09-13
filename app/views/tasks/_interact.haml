@@ -1,0 +1,12 @@
+.interact
+  %ul
+    %li
+      - if has_user_offer?
+        = link_to 'Help Offered', '#help', class: 'button disabled', id: 'help-button'
+      - else
+        = link_to 'Offer Help', '#help', class: 'button active', id: 'help-button'
+    %li
+      - if has_user_report?
+        = link_to 'Reported', '#report', class: 'button disabled', id: 'report-button'
+      - else
+        = link_to 'Report', '#report', class: 'button active', id: 'report-button'

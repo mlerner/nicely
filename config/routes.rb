@@ -2,9 +2,13 @@ Nicely::Application.routes.draw do
 
   devise_for :users
 
-  resources :users
-  resources :tasks
+  match 'browse' => 'pages#browse'
 
+  resources :users
+  resources :tasks do
+    resources :offers
+    resources :reports
+  end
 
   root to: 'pages#index'
 
