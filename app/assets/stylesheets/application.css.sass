@@ -77,17 +77,15 @@
   src: url("http://playgroundinc.com/fonts/7dcf6c37-4fb4-4211-9808-6a39bfa89e0d.ttf") format("truetype")
   src: url("http://playgroundinc.com/fonts/1baaf9ba-feec-45ca-a826-7bcf9f8e5b21.svg#1baaf9ba-feec-45ca-a826-7bcf9f8e5b21") format("svg")
 
-body
-  margin: 0
-  color: #fff
-  font-family: 'proxima-nova',Proxima Nova,'Helvetica Neue',Helvetica,sans-serif
-
-body
+html, body
   background: $bg-color
   font-size: 100%
   line-height: 1.25
   font-family: 'proxima-nova',Proxima Nova,'Helvetica Neue',Helvetica,sans-serif
   color: #fff
+
+body
+  margin: 0 auto
 
 h1, h2, h3
   margin-top: 0
@@ -166,9 +164,13 @@ input[type="password"], input[type="url"]
   width: 100%
 
 input[type="number"]
+  width: 100%
+
+.inline
+  display: inline-block
   width: 50%
 
-.inline-label
+.inline-label, .field-with-errors > .inline-label
   font-family: inherit
   width: 40%
   margin-left: 15px
@@ -187,9 +189,8 @@ button, input, select, textarea
   font-size: 100%
   margin: 0
 
-.signup-submit
-  margin-top: 39px
-  height: 51px
+.signup-button
+  margin-top: 10px
   padding-top: 10px
   width: 100%
 
@@ -224,6 +225,13 @@ p
 .disabled
   background: #999 !important
   cursor: not-allowed !important
+
+.no-padding
+  padding-left: 0px
+  padding-right: 0px
+
+textarea
+  resize: none
 
 *
   padding: 0

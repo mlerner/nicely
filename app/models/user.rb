@@ -9,4 +9,12 @@ class User < ActiveRecord::Base
   attr_accessible :email, :name, :password, :password_confirmation, :remember_me
   has_many :offers
   has_many :tasks
+
+  def display_name
+    if self.name
+      self.name
+    else
+      'Anonymous'
+    end
+  end
 end

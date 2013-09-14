@@ -1,4 +1,4 @@
-%html{ xmlns: "http://www.w3.org/TR/html5", "xmlns:og" => "http://opengraphprotocol.org/schema/", "xmlns:fb" => "http://www.facebook.com/2008/fbml", lang: 'en'}
+%html{ lang: 'en'}
   = render partial: 'layouts/header'
   %body
     .page
@@ -6,8 +6,7 @@
         = render partial: 'layouts/devise'
       - else
         = render partial: 'pages/body_content'
+    - content_for?(:footer) ? yield(:footer) : render(:partial => 'pages/footer')
 
     = yield :javascript
 
-
-    - content_for?(:footer) ? yield(:footer) : render(:partial => 'pages/footer')

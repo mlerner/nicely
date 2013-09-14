@@ -1,0 +1,16 @@
+.summary
+  %p
+    = link_to summary.title, task_path(summary)
+  .details
+    .avatar
+      = link_to image_tag(gravatar_url(summary.user.email)), user_path(summary.user)
+    .submission
+      .submitter
+        %span
+          Submitted by
+          = link_to summary.user.display_name, user_path(summary.user)
+        %p.ago
+          Created
+          = distance_of_time_in_words_to_now(summary.created_at)
+          ago
+

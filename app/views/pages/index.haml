@@ -1,11 +1,12 @@
 .content
-  - if user_signed_in?
-  - else
-    .landing
-      .text
-        %h3 Making the world a better place, one favor at a time.
-        %p
-          = link_to 'Sign up', root_path, class: 'button'
+  .landing
+    .text
+      %h3 Making the world a better place, one favor at a time.
+      %p
+        = link_to 'Sign up', root_path, class: 'button'
+  .recent-tasks
+    = render partial: 'tasks/summary', collection: @recent_tasks
+
 
 
 

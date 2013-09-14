@@ -53,9 +53,6 @@ nav
   text-decoration: none
 
 .page
-  height: 100%
-  header, footer
-    clear: both
   nav.nav-bg
     background: $bg-color
     @include container
@@ -114,21 +111,25 @@ nav
         text-align: center
   .form
     background-color: $good-color
-    height: 795px
     .page-form
       @include container
       padding-top: 20px
+      padding-bottom: 20px
       .form-contents
+        @include span-columns(12,12)
+        position: relative
         .text
           background-color: $bg-color
           padding: 20px
           @include span-columns(6,12)
+          position: relative
         #map_container
           @include span-columns(5 omega,12)
           background-color: $bg-color
           position: fixed
+          top: 138px
           #map_canvas
-            height: 450px
+            height: 416px
             margin: 20px
         color: $good-color
         h3
@@ -219,6 +220,36 @@ nav
         p
           font-size: 24px
           font-weight: 400
+    .recent-tasks
+      @include container
+      height: 100%
+      .summary
+        @include span-columns(3, 9)
+        color: $good-color
+        padding: 10px
+        .details
+          .avatar
+            width: 60px
+            float: left
+            a > img
+              border-radius: 50%
+              overflow: hidden
+          .submission
+            width: 250px
+            a:hover
+              border-bottom: 3px solid $good-color
+            .ago
+              font-size: 12px
+              color: grey
+
+
+
+
+        p
+          word-wrap: break-word
+        &:nth-child(3n)
+          @include omega
+
 
 
     // main content spans 6 of those 9 columns.

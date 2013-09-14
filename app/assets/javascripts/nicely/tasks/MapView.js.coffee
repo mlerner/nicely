@@ -38,8 +38,6 @@ class Nicely.Tasks.MapView extends Nicely.Base
       @mapOptions()))
     @generateMarkers()
 
-    console.log @endMarkerOptions()
-
 
     @map().mapTypes.set('map_style', @styledMap())
     @map().setMapTypeId('map_style')

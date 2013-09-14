@@ -23,7 +23,7 @@
               %span.field.h2
                 Task starts in:
               %span.data.h2
-                = distance_of_time_in_words(Time.now, @task.start_time)
+                = distance_of_time_in_words_to_now(@task.start_time)
             %li
               %span.field.h2
                 End Location:
@@ -75,7 +75,9 @@
     });
   - if user_signed_in?
     :javascript
-      tasksController.userID(#{current_user.id});
+      jQuery(document).ready(function($){
+        tasksController.userID(#{current_user.id});
+      });
 
 
 

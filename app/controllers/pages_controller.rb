@@ -1,7 +1,11 @@
 class PagesController < ApplicationController
   def index
-    @recent_tasks = Task.last(5)
-    render template: 'pages/index'
+    if user_signed_in?
+      render template: 'pages/feed' and return
+    else
+      @recent_tasks = Task.last(5)
+      render template: 'pages/index' and return
+    end
   end
 
   def browse

@@ -15,5 +15,6 @@
 //= require lib/underscore
 //= require lib/backbone
 //= require jquery/jquery.geocomplete
+//= require jquery/jquery.autosize.min
 //= require utils/coffee-util
 //= require nicely/Base
