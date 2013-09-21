@@ -1,7 +1,16 @@
 .summary
   .title
-    %h2
-      = link_to feed_summary.title, task_path(feed_summary)
+    .liked
+      .icon
+        = image_tag('heart_empty.png')
+      .count
+        %p 1
+    .text
+      %h2
+        = link_to feed_summary.title, task_path(feed_summary)
+      %h1
+        = task_distance(feed_summary)
+        miles away
   .details
     .avatar
       = link_to image_tag(gravatar_url(feed_summary.user.email, gravatar_size)), user_path(feed_summary.user)

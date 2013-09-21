@@ -18,6 +18,15 @@ module PagesHelper
 
   end
 
+  def task_distance(task)
+    if request.location.coordinates[0] > 0.0
+      geocoded_location = [request.location.coordinates[0], request.location.coordinates[1]]
+    else
+      geocoded_location = [42.4439614, -76.5018807]
+    end
+    haversine_distance(geocoded_location[0], geocoded_location[1], task.start_xy.lat, task.start_xy.lon).round(2)
+  end
+
   def tab_selected?(tab)
     (current_tab == 'default' && DEFAULT_TABS.include?(tab)) ||
     tab == current_tab ||
