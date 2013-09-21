@@ -5,7 +5,7 @@
       %p
         = link_to 'Sign up', root_path, class: 'button'
   .recent-tasks
-    = render partial: 'tasks/summary', collection: @recent_tasks
+    = render partial: 'tasks/summary', collection: @recent_tasks, locals: { gravatar_size: '40'}
 
 
 

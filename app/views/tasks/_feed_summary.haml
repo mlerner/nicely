@@ -1,0 +1,17 @@
+.summary
+  .title
+    %h2
+      = link_to feed_summary.title, task_path(feed_summary)
+  .details
+    .avatar
+      = link_to image_tag(gravatar_url(feed_summary.user.email, gravatar_size)), user_path(feed_summary.user)
+    .submission
+      .submitter
+        %span
+          Submitted by
+          = link_to feed_summary.user.display_name, user_path(feed_summary.user)
+        %p.ago
+          Created
+          = distance_of_time_in_words_to_now(feed_summary.created_at)
+          ago
+

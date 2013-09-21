@@ -73,28 +73,48 @@ nav
         float: right
         text-align: left
         display: inline-block
-  .browse
+
+  .feed
     @include container
     .refine
       @include span-columns(12,12)
-    .sort-by
-      @include span-columns(6,12)
-    .timespan
-      @include span-columns(6 omega,12)
-    .refine, .sort-by, .timespan
+    .task-summaries
+      @include span-columns(9, 9)
       color: $good-color
-      h3
-        padding: 0.75em 0
-      ul
-        list-style: none
-        li
-          margin: 0 20px 0 0
-          text-align: right
-          float: left
-          display: inline-block
-          a
-            .selected, &:hover
-              border-bottom: 3px solid
+      &:first-child
+        padding-top: 0px
+      &:last-child
+        padding-bottom: 20px
+      .summary
+        padding-top: 20px
+        @include span-columns(9,9)
+        .title
+          @include span-columns(6, 9)
+          a:hover
+            border-bottom: 3px solid $good-color
+          h2
+            padding: 20px 0 0 0
+        .details
+          @include span-columns(3 omega, 9)
+          .avatar
+            @include span-columns(3, 9)
+            a > img
+              width: 80px
+              border-radius: 50%
+              overflow: hidden
+          .submission
+            @include span-columns(6 omega, 9)
+            a:hover
+              border-bottom: 3px solid $good-color
+            .submitter
+              padding-top: 20px
+            .ago
+              font-size: 12px
+              color: grey
+
+  .browse
+    @include container
+
 
   .devise
     @include container
@@ -273,15 +293,15 @@ nav
   &:hover
     text-decoration: underline
 
-.helpers, .top, .today
+.new, .helpers, .top, .today
   color: $good-color
   border-color: $good-color
 
-.askers, .recent, .week
+.askers, .nearby, .week
   color: #ff5b54
   border-color: #ff5b54
 
-.tasks, .new, .month
+.tasks, .popular, .month, .new-sort
   color: #f1c40f
   border-color: #f1c40f
 
@@ -291,6 +311,42 @@ nav
 .year
   color: #27ae60
   border-color: #27ae60
+
+.refine
+  @include span-columns(12,12)
+.sort-by
+  @include span-columns(6,12)
+.timespan
+  @include span-columns(6 omega,12)
+.refine, .sort-by, .timespan
+  color: $good-color
+  h3
+    padding: 0.75em 0
+  ul
+    list-style: none
+    li
+      margin: 0 20px 0 0
+      text-align: right
+      float: left
+      display: inline-block
+      a
+        .selected, &:hover
+          border-bottom: 3px solid
+.pagination-container
+  @include container
+
+.pagination
+  @include span-columns(12,12)
+  margin-top: 50px
+  text-align: center
+  font-size: 1.75em
+  font-weight: 600
+  padding: 0.75em 0
+  .previous_page
+  .current
+    color: $good-color
+    border-color: $good-color
+    border-bottom: 3px solid
 
 
 @media screen and (max-width: 480px)
