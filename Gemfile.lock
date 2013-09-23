@@ -66,6 +66,7 @@ GEM
       haml (>= 3.1, < 4.1)
       railties (>= 3.1, < 4.1)
     hike (1.2.3)
+    hooks (0.3.1)
     i18n (0.6.4)
     journey (1.0.4)
     jquery-rails (3.0.4)
@@ -106,6 +107,11 @@ GEM
     rake (10.1.0)
     rdoc (3.12.2)
       json (~> 1.4)
+    recommendable (2.1.2)
+      activesupport (>= 3.0.0)
+      hooks (>= 0.2.1)
+      redis (>= 2.2.0)
+    redis (3.0.4)
     rgeo (0.3.20)
     rgeo-activerecord (0.4.5)
       activerecord (>= 3.0.3)
@@ -154,6 +160,7 @@ DEPENDENCIES
   jquery-rails
   pg
   rails (= 3.2.11)
+  recommendable
   rgeo
   rgeo-geojson
   sass-rails (~> 3.2.3)

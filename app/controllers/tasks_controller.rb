@@ -40,7 +40,30 @@ class TasksController < ApplicationController
 
   # GET /tasks/1/edit
   def edit
-    @user = User.find(params[:id])
+    @user = Task.find(params[:id])
+  end
+
+  def like
+    @task = Task.find_by_id(params[:id])
+    @user = User.find_by_id(params[:user_id])
+    @user.like(@task)
+    if @user.likes?(@task)
+      render json: { success: true } and return
+    else
+      render json: { success: false } and return
+    end
+  end
+
+  def unlike
+    @task = Task.find_by_id(params[:id])
+    @user = User.find_by_id(params[:user_id])
+    @user.unlike(@task)
+    if !@user.likes?(@task)
+      render json: { success: true } and return
+    else
+      render json: { success: false } and return
+    end
+
   end
 
   # POST /tasks

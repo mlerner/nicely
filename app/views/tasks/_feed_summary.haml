@@ -1,10 +1,10 @@
 .summary
   .title
     .liked
-      .icon
-        = image_tag('heart_empty.png')
+      .icon{class: liked(feed_summary), data: {task_id: feed_summary.id} }
       .count
-        %p 1
+        %p{data: {count: feed_summary.liked_by_count} }
+          = feed_summary.liked_by_count
     .text
       %h2
         = link_to feed_summary.title, task_path(feed_summary)

@@ -15,7 +15,14 @@ module PagesHelper
   def generate_class(tab, other_styles = nil)
     tab << ' selected' if tab_selected?(tab)
     tab
+  end
 
+  def liked(task)
+    if current_user.likes?(task)
+      'red-full-heart'
+    else
+      'red-empty-heart'
+    end
   end
 
   def task_distance(task)

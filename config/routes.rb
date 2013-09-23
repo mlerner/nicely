@@ -8,6 +8,10 @@ Nicely::Application.routes.draw do
   resources :tasks do
     resources :offers
     resources :reports
+    member do
+      post 'like'
+      post 'unlike'
+    end
   end
 
   root to: 'pages#index'

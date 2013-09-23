@@ -17,3 +17,14 @@
 
   .pagination-container
     = will_paginate @recent_tasks
+
+= content_for :javascript do
+  = javascript_include_tag 'nicely/feed/manifest.js'
+  :javascript
+    jQuery(document).ready(function($){
+
+      var feedView = new Nicely.Feed.FeedView(#{current_user.id}, {
+        el: '.page'
+      });
+
+    });

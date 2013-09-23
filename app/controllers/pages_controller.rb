@@ -5,6 +5,7 @@ class PagesController < ApplicationController
       @recent_tasks = get_feed_content(params)
       render template: 'pages/feed' and return
     else
+      @recent_tasks = Task.last(10)
       render template: 'pages/index' and return
     end
   end
