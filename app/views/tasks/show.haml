@@ -11,7 +11,12 @@
           Submitted
           = time_ago_in_words(@task.created_at, Time.now)
           ago by
-          = link_to 'username', user_path(@task.user)
+          = link_to @task.user.display_name, user_path(@task.user)
+        .liked
+          .icon{class: liked(@task), data: {task_id: @task.id} }
+          .count
+            %p{data: {count: @task.liked_by_count} }
+              = @task.liked_by_count
         .location
           %ul
             %li
@@ -36,14 +41,21 @@
               %span.data.h2
                 = "#{@task.estimated_time} minutes"
 
-        %p{data: {p: @task.description }}
+        %p.description{data: {p: @task.description }}
           = @task.description
-        = render partial: 'tasks/interact'
+        = render partial: 'tasks/interact', locals: {task: @task}
       .comments
     .right
       .status
-        %h3.medium-padding
-          Nice people needed
+        - if @task.assignee
+          %h3.medium-padding.in-progress
+            Task in progress
+        - elsif @task.status == 1
+          %h3.medium-padding
+            Task completed
+        - else
+          %h3.medium-padding
+            Nice people needed
         %p.grey.h2
           There are
           = link_to "#{@task.offers.count}", task_offers_url(@task), class: 'normal-link', id: 'offers'
@@ -58,8 +70,6 @@
             %li
               = link_to 'Share to Twitter', "https://twitter.com/intent/tweet?url=#{CGI.escape(request.original_url)}", class: 'twitter-icon', id: 'share-twitter'
             %li
-              %script{type: 'text/javascript'}
-                reddit_url = 'http://www.reddit.com/r/WTF/comments/1m9nh4/im_a_director_of_an_afterschool_program_at_an/'
               %script{type: 'text/javascript', src: 'http://www.reddit.com/static/button/button3.js'}
 
 = content_for :javascript do
@@ -71,7 +81,7 @@
       tasksController
         .newOfferURL("#{task_offers_url(@task)}")
         .newReportURL("#{task_reports_url(@task)}")
-      var taskView = new Nicely.Tasks.TaskView(tasksController, #{@task.to_json}, { el: '.task'});
+      var taskView = new Nicely.Tasks.TaskView(tasksController, #{@task.to_json}, "#{root_path}", { el: '.task'});
     });
   - if user_signed_in?
     :javascript

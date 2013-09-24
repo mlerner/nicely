@@ -11,6 +11,22 @@ class Nicely.Tasks.TasksController extends Nicely.Base
     @initializeAttributes(@attributes)
     super()
 
+  newHelp: (task) ->
+    if @userID()?
+      $.ajax(
+        url: "/tasks/#{task}/revoke",
+        type: "POST",
+        data: {
+          task_id: task
+          user_id: @userID()
+        }
+        success: (data, status, xhr) =>
+          @trigger('task:revoked', data)
+
+        error: () =>
+          @trigger('task:notrevoked')
+      )
+
   newOffer: (task) ->
     if @newOfferURL()? && @userID()?
       $.ajax(
@@ -25,6 +41,21 @@ class Nicely.Tasks.TasksController extends Nicely.Base
 
         error: () =>
           @trigger('offer:failure')
+      )
+
+  deleteTask: (task) ->
+    if @userID()?
+      $.ajax(
+        url: "/tasks/#{task}/delete",
+        type: "POST",
+        data: {
+          user_id: @userID()
+        }
+        success: (data, status, xhr) =>
+          @trigger('task:deleteSuccess', data)
+
+        error: () =>
+          @trigger('task:deleteFailure')
       )
 
   reportTask: (task) ->

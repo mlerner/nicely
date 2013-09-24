@@ -6,11 +6,17 @@ Nicely::Application.routes.draw do
 
   resources :users
   resources :tasks do
-    resources :offers
     resources :reports
+    resources :offers do
+      post 'revoke'
+      get  'accept'
+    end
     member do
+      post 'delete'
       post 'like'
       post 'unlike'
+      post 'revoke'
+      get 'complete'
     end
   end
 

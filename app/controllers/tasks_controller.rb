@@ -43,6 +43,16 @@ class TasksController < ApplicationController
     @user = Task.find(params[:id])
   end
 
+  def delete
+    @task = Task.find_by_id(params[:id])
+    @task.destroy
+    if @task.destroyed?
+      render json: { success: true } and return
+    else
+      render json: { success: false } and return
+    end
+  end
+
   def like
     @task = Task.find_by_id(params[:id])
     @user = User.find_by_id(params[:user_id])
@@ -63,7 +73,21 @@ class TasksController < ApplicationController
     else
       render json: { success: false } and return
     end
+  end
 
+  def revoke
+    @task = Task.find_by_id(params[:id])
+    if @task.assignee || @task.user.id != params[:user_id]
+      @task.assignee = nil
+      if @task.save
+        render json: { success: true } and return
+      end
+    end
+    render json: { success: false } and return
+  end
+
+  def complete
+    redirect_to root_path
   end
 
   # POST /tasks

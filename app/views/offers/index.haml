@@ -1,0 +1,9 @@
+
+.facebook-notice
+.offers
+  .title
+    %h3 Offers:
+  - if !@task.offers.empty?
+    = render partial: 'offers/offer', collection: @task.offers, locals: {gravatar_size: '80'}
+  - else
+    %h3 None so far

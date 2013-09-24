@@ -73,6 +73,41 @@ nav
         float: right
         text-align: left
         display: inline-block
+  .offers
+    @include container
+    .title
+      @include span-columns(9,9)
+      h3
+        color: #ff5b54
+        padding: 0.75em 0
+    .facebook-notice
+      @include span-columns(9,9)
+    .offer
+      @include span-columns(9,9)
+      .accept
+        @include span-columns(5 omega, 9)
+        padding-top: 20px
+      .details
+        @include span-columns(4, 9)
+        color: grey
+        .avatar
+          @include span-columns(2, 9)
+          a > img
+            width: 80px
+            border-radius: 50%
+            overflow: hidden
+        .submission
+          @include span-columns(7 omega, 9)
+          a:hover
+            border-bottom: 3px solid $good-color
+          .submitter
+            padding-top: 20px
+          .ago
+            font-size: 12px
+            color: grey
+    h3
+      color: $good-color
+
 
   .feed
     @include container
@@ -92,19 +127,6 @@ nav
           @include span-columns(6,9)
           .liked
             @include span-columns(1, 12)
-            .icon
-              width: 100%
-              margin-left: 5px
-              cursor: pointer
-              background-repeat: no-repeat
-              height: 32px
-              width: 32px
-
-            .count
-              font-size: 0.75em
-              margin-top: 5px
-              text-align: center
-              width: 42px
           .text
             @include span-columns(11 omega, 12)
             h1
@@ -148,6 +170,9 @@ nav
       border-radius: 3px
       h3
         text-align: center
+      .signup-submit
+        width: 100%
+        margin-top: 10px
   .form
     background-color: $good-color
     .page-form
@@ -190,9 +215,17 @@ nav
         .title
           color: $good-color
         .details
+          @include span-columns(9,9)
           .ago
+            @include span-columns(8 omega,9)
             color: darkgrey
+            word-wrap: break-word
+            margin-top: 20px
+            min-height: 42px
+          .liked
+            @include span-columns(1, 9)
           .location
+            @include span-columns(9,9)
             margin-bottom: 24px
             ul
               list-style: none
@@ -200,6 +233,10 @@ nav
                 margin-bottom: 5px
                 .field
                   color: $good-color
+          .description
+            @include span-columns(9,9)
+          .interact
+            @include span-columns(9,9)
           h3, p
             word-wrap: break-word
 
@@ -374,6 +411,24 @@ nav
 
 .red-full-heart
   background-image: url(/assets/red_heart_full.png)
+
+.in-progress
+  color: #2ecc71
+
+.liked
+  .icon
+    width: 100%
+    margin-left: 5px
+    cursor: pointer
+    background-repeat: no-repeat
+    height: 32px
+    width: 32px
+
+  .count
+    font-size: 0.75em
+    margin-top: 5px
+    text-align: center
+    width: 42px
 
 @media screen and (max-width: 480px)
   .nav-links

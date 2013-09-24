@@ -27,7 +27,7 @@ class PagesController < ApplicationController
       query = query.close_to(geocoded_address[0], geocoded_address[1])
       query.paginate(page: params[:page], per_page: 10)
     elsif params[:tab] == 'popular'
-      Task.paginate(page: params[:page], per_page: 10).order('id DESC')
+      Task.top(100).paginate(page: params[:page], per_page: 10)
     else
       Task.paginate(page: params[:page], per_page: 10).order('id DESC')
     end
