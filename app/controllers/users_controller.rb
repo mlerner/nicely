@@ -10,6 +10,11 @@ class UsersController < ApplicationController
     end
   end
 
+  def feedback
+    @feedback = Comment.new
+    redirect_to root_path and return
+  end
+
   # GET /users/1
   # GET /users/1.json
   def show

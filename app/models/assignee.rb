@@ -1,4 +1,4 @@
 class Assignee < ActiveRecord::Base
   belongs_to :task
-  has_one :user
+  belongs_to :user
 end

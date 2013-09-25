@@ -44,8 +44,9 @@
             = f.hidden_field :end_xy
 
           %div= f.submit "Submit", class: 'button signup-button'
-          %div= link_to 'Cancel', @back_path, class: 'button report signup-button no-padding', id: 'cancel-button'
+          %div= link_to 'Cancel', root_path, class: 'button report signup-button no-padding', id: 'cancel-button'
       #map_container
+        %h3.before-location Enter a Start or End location
         #map_canvas
 
 = content_for :javascript do

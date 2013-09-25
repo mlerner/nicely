@@ -1,5 +1,6 @@
 class Task < ActiveRecord::Base
   TASK_PER_PAGE = 10
+  ACTIVE_TASK = 0
   self.table_name = 'tasks'
   self.rgeo_factory_generator = RGeo::Geos.factory_generator(srid: 4326)
   RGeo::ActiveRecord::GeometryMixin.set_json_generator(:geojson)
@@ -26,9 +27,17 @@ class Task < ActiveRecord::Base
   }
 
   def default_values
-    self.status = 0
+    self.status ||= 0
     self.start_loc ||= 'None'
     self.end_loc ||= 'None'
+  end
+
+  def is_owner?(user)
+    self.user.id == user.id
+  end
+
+  def active?
+    self.status == ACTIVE_TASK
   end
 
 end

@@ -1,7 +1,7 @@
 
 
 class TasksController < ApplicationController
-  before_filter :authenticate_user!, only: [:new, :edit, :update, :destroy]
+  before_filter :authenticate_user!, only: [:new, :edit, :update, :destroy, :complete]
 
   # GET /tasks
   # GET /tasks.json
@@ -40,7 +40,7 @@ class TasksController < ApplicationController
 
   # GET /tasks/1/edit
   def edit
-    @user = Task.find(params[:id])
+    @task = Task.find(params[:id])
   end
 
   def delete
@@ -77,7 +77,7 @@ class TasksController < ApplicationController
 
   def revoke
     @task = Task.find_by_id(params[:id])
-    if @task.assignee || @task.user.id != params[:user_id]
+    if @task.assignee
       @task.assignee = nil
       if @task.save
         render json: { success: true } and return
@@ -87,7 +87,21 @@ class TasksController < ApplicationController
   end
 
   def complete
-    redirect_to root_path
+    @task = Task.find(params[:id])
+    task_completer = @task.assignee.user
+    task_completer.points = task_completer.points + @task.liked_by_count
+    @task.status = 1
+    if @task.save and task_completer.save
+      @feedback = Comment.new
+      @feedback.user = @task.assignee.user
+      @feedback.commenter_id = @task.user.id
+      @feedback.save
+      render 'tasks/complete' and return
+    else
+      flash[:notice] =  {type: 'failure', message: "Task assigned!"}
+      redirect_to root_path unless @task.is_owner?(current_user)
+    end
+
   end
 
   # POST /tasks

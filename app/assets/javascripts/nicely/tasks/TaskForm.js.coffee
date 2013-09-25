@@ -27,6 +27,8 @@ class Nicely.Tasks.TaskForm extends Backbone.View
         markerOptions:
           draggable: false
           icon: 'http://www.google.com/mapfiles/dd-start.png'
+      ).bind("geocode:result", () =>
+        @$('.before-location').fadeOut()
       )
     @$('input[name="task[end_loc]"]')
       .geocomplete(
@@ -36,6 +38,8 @@ class Nicely.Tasks.TaskForm extends Backbone.View
         markerOptions:
           draggable: false
           icon: 'http://www.google.com/mapfiles/dd-end.png'
+      ).bind("geocode:result", () =>
+        @$('.before-location').fadeOut()
       )
 
   logInput: ->

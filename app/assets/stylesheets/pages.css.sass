@@ -108,6 +108,20 @@ nav
     h3
       color: $good-color
 
+  .feedback
+    @include container
+    h3
+      color: $good-color
+      text-align: center
+    .form
+      @include span-columns(6,12)
+      @include squish(3,3)
+      background: #ffffff
+      textarea
+        height: 200px
+
+
+
 
   .feed
     @include container
@@ -182,6 +196,7 @@ nav
       .form-contents
         @include span-columns(12,12)
         position: relative
+        color: $good-color
         .text
           background-color: $bg-color
           padding: 20px
@@ -192,10 +207,18 @@ nav
           background-color: $bg-color
           position: fixed
           top: 138px
+          .before-location
+            position: absolute
+            top: 160px
+            margin-left: 60px
+            text-align: center
+            color: $good-color
+            z-index: 10
+            background: transparent
           #map_canvas
+            z-index: 5
             height: 416px
             margin: 20px
-        color: $good-color
         h3
           text-align: center
 
@@ -429,6 +452,18 @@ nav
     margin-top: 5px
     text-align: center
     width: 42px
+
+.notice
+  @include span-columns(9,9)
+  text-align: center
+  .message
+    @include span-columns(9,9)
+  .success
+    color: $green
+  .failure
+    color: $red
+  h3
+    padding: 0.5em 0
 
 @media screen and (max-width: 480px)
   .nav-links

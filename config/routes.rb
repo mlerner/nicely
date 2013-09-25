@@ -4,7 +4,11 @@ Nicely::Application.routes.draw do
 
   match 'browse' => 'pages#browse'
 
-  resources :users
+  resources :users do
+    resources :feedback do
+      post 'create'
+    end
+  end
   resources :tasks do
     resources :reports
     resources :offers do
@@ -19,6 +23,8 @@ Nicely::Application.routes.draw do
       get 'complete'
     end
   end
+
+  resources :comments
 
   root to: 'pages#index'
 

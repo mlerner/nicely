@@ -19,11 +19,12 @@ class OffersController < ApplicationController
     @offer = Offer.find_by_id(params[:offer_id])
     assigned_to = Assignee.new
     assigned_to.user = @offer.user
+    assigned_to.save
     @task.assignee = assigned_to
     if assigned_to.save && @task.save
-      flash[:notice] = {class: 'success', message: "Task assigned!"}
+      flash[:notice] = {type: 'success', message: "Task assigned!"}
     else
-      flash[:notice] = {class: 'failure', message: "Task assigned!"}
+      flash[:notice] = {type: 'failure', message: "Task not assigned!"}
     end
     redirect_to task_path(@task) and return
   end

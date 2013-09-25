@@ -2,6 +2,8 @@
   .map
     #map-canvas
   .task-content
+    - if flash[:notice]
+      = render partial: 'pages/notice'
     .left
       .title
         %h3.medium-padding
@@ -43,14 +45,15 @@
 
         %p.description{data: {p: @task.description }}
           = @task.description
-        = render partial: 'tasks/interact', locals: {task: @task}
+        - if @task.active?
+          = render partial: 'tasks/interact', locals: {task: @task}
       .comments
     .right
       .status
-        - if @task.assignee
+        - if @task.assignee && @task.active?
           %h3.medium-padding.in-progress
             Task in progress
-        - elsif @task.status == 1
+        - elsif !@task.active?
           %h3.medium-padding
             Task completed
         - else

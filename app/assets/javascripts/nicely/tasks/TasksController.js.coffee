@@ -16,12 +16,14 @@ class Nicely.Tasks.TasksController extends Nicely.Base
       $.ajax(
         url: "/tasks/#{task}/revoke",
         type: "POST",
+        dataType: 'json'
         data: {
           task_id: task
           user_id: @userID()
         }
         success: (data, status, xhr) =>
-          @trigger('task:revoked', data)
+          if data.success
+            @trigger('task:revoked', data)
 
         error: () =>
           @trigger('task:notrevoked')
