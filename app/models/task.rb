@@ -26,6 +26,13 @@ class Task < ActiveRecord::Base
     )
   }
 
+  scope :active, -> {
+    where(%{
+        tasks.status = 0
+      }
+    )
+  }
+
   def default_values
     self.status ||= 0
     self.start_loc ||= 'None'

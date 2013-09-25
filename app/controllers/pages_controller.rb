@@ -23,13 +23,13 @@ class PagesController < ApplicationController
   def get_feed_content(params)
     if params[:tab] == 'nearby'
       geocoded_address = get_geocoded_address
-      query = query.close_to(geocoded_address[0], geocoded_address[1])
-      query = Task.order("ST_Distance(ST_Transform(tasks.start_xy, 4326), ST_GeographyFromText('SRID=4326;POINT(#{geocoded_address[1]} #{geocoded_address[0]})'))")
-      query.paginate(page: params[:page], per_page: 10)
+      query = Task.close_to(geocoded_address[0], geocoded_address[1])
+      query = query.order("ST_Distance(ST_Transform(tasks.start_xy, 4326), ST_GeographyFromText('SRID=4326;POINT(#{geocoded_address[1]} #{geocoded_address[0]})'))")
+      query.active.paginate(page: params[:page], per_page: 10)
     elsif params[:tab] == 'popular'
       Task.top(100).paginate(page: params[:page], per_page: 10)
     else
-      Task.paginate(page: params[:page], per_page: 10).order('id DESC')
+      Task.active.paginate(page: params[:page], per_page: 10).order('id DESC')
     end
   end
 
