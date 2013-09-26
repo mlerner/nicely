@@ -32,6 +32,8 @@ gem  'rgeo-geojson'
 gem  'will_paginate', '~> 3.0'
 gem 'geocoder'
 gem 'recommendable'
+gem 'private_pub'
+gem 'thin'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

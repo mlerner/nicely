@@ -24,5 +24,5 @@
           = link_to 'Reported', '#report', class: 'button disabled', id: 'report-button'
         - else
           = link_to 'Report', '#report', class: 'button active report', id: 'report-button'
-    - if user_signed_in? && task.assignee && (current_user.id == task.user.id || current_user.id == task.assignee.id)
-      = link_to 'Chat', '#report', class: 'button active', id: 'chat-button'
+    - if user_signed_in? && task.assignee && (current_user.id == task.user.id || current_user.id == task.assignee.user.id)
+      = link_to 'Chat', chat_task_path(task), class: 'button active', id: 'chat-button'

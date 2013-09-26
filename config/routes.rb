@@ -9,7 +9,9 @@ Nicely::Application.routes.draw do
       post 'create'
     end
   end
+
   resources :tasks do
+    resources :messages
     resources :reports
     resources :offers do
       post 'revoke'
@@ -21,6 +23,7 @@ Nicely::Application.routes.draw do
       post 'unlike'
       post 'revoke'
       get 'complete'
+      get 'chat'
     end
   end
 

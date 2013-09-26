@@ -13,6 +13,7 @@ class Task < ActiveRecord::Base
   has_one :assignee
   has_many :comments
   has_many :offers
+  has_many :messages
   has_many :reports
 
   scope :close_to, ->(latitude, longitude, distance_in_meters = 10000) {

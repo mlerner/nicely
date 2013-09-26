@@ -17,4 +17,5 @@
 //= require jquery/jquery.geocomplete
 //= require jquery/jquery.autosize.min
 //= require utils/coffee-util
+//= require private_pub
 //= require nicely/Base

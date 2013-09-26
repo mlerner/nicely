@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
 
   recommends :tasks
   before_save :default_values
+  validates :username
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :name, :password,

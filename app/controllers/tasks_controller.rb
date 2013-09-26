@@ -1,7 +1,7 @@
 
 
 class TasksController < ApplicationController
-  before_filter :authenticate_user!, only: [:new, :edit, :update, :destroy, :complete]
+  before_filter :authenticate_user!, only: [:new, :edit, :update, :destroy, :complete, :chat]
 
   # GET /tasks
   # GET /tasks.json
@@ -101,7 +101,17 @@ class TasksController < ApplicationController
       flash[:notice] =  {type: 'failure', message: "Task assigned!"}
       redirect_to root_path unless @task.is_owner?(current_user)
     end
+  end
 
+  def chat
+    @task = Task.find(params[:id])
+    unless @task.user.id == current_user.id ||
+        (@task.assignee && @task.assignee.user.id == current_user.id)
+      redirect_to task_path(@task) and return
+    end
+
+    @message = Message.new
+    render 'tasks/chat' and return
   end
 
   # POST /tasks
@@ -112,7 +122,7 @@ class TasksController < ApplicationController
 
     respond_to do |format|
       if @task.save
-        format.html { redirect_to @task, notice: 'Task was successfully created.' }
+        format.html { redirect_to @task }
         format.json { render json: @task, status: :created, location: @task }
       else
         format.html { render action: "new" }

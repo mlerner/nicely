@@ -117,8 +117,36 @@ nav
       @include span-columns(6,12)
       @include squish(3,3)
       background: #ffffff
-      textarea
-        height: 200px
+
+  .feedback
+    textarea
+      height: 200px
+
+  .chat
+    @include container
+    .form
+      @include span-columns(12,12)
+      background: #ffffff
+      .controls
+        @include span-columns(12,12)
+        .text
+          @include span-columns(10, 12)
+        .button
+          @include span-columns(2 omega, 12)
+          height: 50px
+          margin-top: 0px
+
+      ul
+        min-height: 200px
+        max-height: 400px
+        overflow-y: scroll
+        @include span-columns(9,9)
+        list-style: none
+        li
+          color: black
+          h1
+            color: $good-color
+            padding: 0.75em 0
 
 
 
@@ -168,6 +196,9 @@ nav
               color: grey
 
   .browse
+    @include container
+
+  .chat
     @include container
 
 
@@ -452,6 +483,9 @@ nav
     margin-top: 5px
     text-align: center
     width: 42px
+
+.grey
+  color: darkgrey
 
 .notice
   @include span-columns(9,9)

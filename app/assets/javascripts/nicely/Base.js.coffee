@@ -54,7 +54,13 @@ window.map_styles = [
   }
 ]
 
+_.templateSettings = {
+  evaluate : /\{\[([\s\S]+?)\]\}/g,
+  interpolate : /\{\{([\s\S]+?)\}\}/g
+}
+
 Nicely.base_module = {
+
   initializeAttributes: (attributes) ->
     @initAttribute(k,v) for k,v of attributes
 
