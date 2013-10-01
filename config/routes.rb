@@ -5,9 +5,10 @@ Nicely::Application.routes.draw do
   match 'browse' => 'pages#browse'
 
   resources :users do
-    resources :feedback do
-      post 'create'
+    member do
+      post 'give_feedback'
     end
+    resources :feedback
   end
 
   resources :tasks do

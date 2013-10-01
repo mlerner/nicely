@@ -1,9 +1,11 @@
 .feedback
   %h3 Awesome! Use the form below to add feedback about your helper.
   .form
-    = form_for @feedback, url: user_feedback_path(@task.assignee.user, @feedback) do |f|
+    = form_for Comment.new, url: give_feedback_user_path(@task.user) do |f|
       %div
         = f.text_area :text
+      %div
+        = f.hidden_field :commenter_id, value: @task.user.id
       %div= f.submit "Submit", class: 'button signup-button'
       %div.nope
         = link_to 'No thanks', root_path, class: 'button signup-button no-padding'

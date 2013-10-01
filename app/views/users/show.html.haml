@@ -1,10 +1,28 @@
-%p
-  %b Name:
-  = @user.name
-%p
-  %b Email:
-  = @user.email
+.profile
+  .user-tasks
+    .refine
+      %ul
+        %li
+          %h3 Show:
+        %li
+          %h3
+            = link_to 'Submitted', user_path(@user, tab: 'submitted-tasks'), class: generate_class('submitted-tasks')
+        %li
+          %h3
+            = link_to 'Completed', user_path(@user, tab: 'recent-help'), class: generate_class('recent-help')
+    .content
+      - if @recent_tasks
+        = render partial: 'tasks/feed_summary', collection: @recent_tasks, locals: {gravatar_size: '80'}
 
-= link_to 'Edit', edit_user_path(@user)
-\|
-= link_to 'Back', users_path
+
+  .profile-info
+    %p
+      %b
+        = @user.name
+    %p
+      %b
+        = @user.points
+        awesome points
+    .edit
+      - if user_signed_in? && current_user.id == @user.id
+        = link_to 'Edit', edit_user_path(@user)

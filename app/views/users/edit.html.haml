@@ -1,7 +1,8 @@
-%h1 Editing user
+.devise
+  .centered-form
+    %h1 Editing user
+    = render 'form'
 
-= render 'form'
-
-= link_to 'Show', @user
-\|
-= link_to 'Back', users_path
+    = link_to 'Show', @user
+    \|
+    = link_to 'Back', users_path

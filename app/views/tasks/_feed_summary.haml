@@ -1,10 +1,10 @@
-.summary
+.feed-summary
   .title
     .liked
       .icon{class: liked(feed_summary), data: {task_id: feed_summary.id} }
       .count
-        %p{data: {count: feed_summary.liked_by_count} }
-          = feed_summary.liked_by_count
+        %p{data: {count: feed_summary.liked_by_count + feed_summary.offers.count} }
+          = feed_summary.liked_by_count + feed_summary.offers.count
     .text
       %h2
         = link_to feed_summary.title, task_path(feed_summary)

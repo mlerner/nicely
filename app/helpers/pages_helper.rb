@@ -1,5 +1,5 @@
 module PagesHelper
-  DEFAULT_TABS = ['new']
+  DEFAULT_TABS = ['new', 'submitted-tasks']
   def current_tab
     params[:tab] ||= 'default'
   end
@@ -18,7 +18,8 @@ module PagesHelper
   end
 
   def liked(task)
-    if current_user.likes?(task)
+
+    if user_signed_in? && current_user.likes?(task)
       'red-full-heart'
     else
       'red-empty-heart'

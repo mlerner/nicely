@@ -17,8 +17,8 @@
         .liked
           .icon{class: liked(@task), data: {task_id: @task.id} }
           .count
-            %p{data: {count: @task.liked_by_count} }
-              = @task.liked_by_count
+            %p{data: {count: @task.liked_by_count + @task.offers.count} }
+              = @task.liked_by_count + @task.offers.count
         .location
           %ul
             %li

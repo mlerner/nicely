@@ -1,6 +1,6 @@
 class OffersController < ApplicationController
   before_filter :load_task
-  before_filter :authenticate_user!, only: [:index, :accept]
+  before_filter :authenticate_user!, except: [:create]
 
   def create
     @offer = Offer.new
@@ -19,7 +19,6 @@ class OffersController < ApplicationController
     @offer = Offer.find_by_id(params[:offer_id])
     assigned_to = Assignee.new
     assigned_to.user = @offer.user
-    assigned_to.save
     @task.assignee = assigned_to
     if assigned_to.save && @task.save
       flash[:notice] = {type: 'success', message: "Task assigned!"}

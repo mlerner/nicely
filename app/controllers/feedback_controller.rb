@@ -1,7 +1,7 @@
 class FeedbackController < ApplicationController
-  def update
-    @feedback = Comment.find_by_id(params[:id])
-    @feedback.text = params[:text]
+  def create
+    @feedback = Comment.new
+    @feedback.user = params[:user_id]
     if @feedback.save
       flash[:notice] = {type: 'success', message: 'Cool, your feedback was given!'}
 

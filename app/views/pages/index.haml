@@ -3,7 +3,7 @@
     .text
       %h3 Making the world a better place, one favor at a time.
       %p
-        = link_to 'Sign up', new_user_path, class: 'button'
+        = link_to 'Sign up', new_registration_path('user'), class: 'button'
   .recent-tasks
     = render partial: 'tasks/summary', collection: @recent_tasks, locals: { gravatar_size: '40'}
 

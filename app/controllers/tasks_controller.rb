@@ -41,6 +41,7 @@ class TasksController < ApplicationController
   # GET /tasks/1/edit
   def edit
     @task = Task.find(params[:id])
+    redirect_to task_path(@task) and return
   end
 
   def delete
@@ -92,14 +93,10 @@ class TasksController < ApplicationController
     task_completer.points = task_completer.points + @task.liked_by_count
     @task.status = 1
     if @task.save and task_completer.save
-      @feedback = Comment.new
-      @feedback.user = @task.assignee.user
-      @feedback.commenter_id = @task.user.id
-      @feedback.save
       render 'tasks/complete' and return
     else
-      flash[:notice] =  {type: 'failure', message: "Task assigned!"}
-      redirect_to root_path unless @task.is_owner?(current_user)
+      flash[:notice] =  {type: 'failure', message: "Task not completed"}
+      redirect_to task_path(@task) unless @task.is_owner?(current_user)
     end
   end
 
@@ -151,7 +148,7 @@ class TasksController < ApplicationController
   # DELETE /tasks/1.json
   def destroy
     @task = Task.find(params[:id])
-    @task.destroy
+    #@task.destroy
 
     respond_to do |format|
       format.html { redirect_to task_url }

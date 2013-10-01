@@ -43,22 +43,26 @@ class Nicely.Tasks.TaskView extends Backbone.View
     super(options)
 
   offerHelp: ->
+    return unless tasksController.userID()?
     taskID = @model.get('id')
     @$('#help-button').toggleClass('disabled')
     @$('#help-button').html('Saving offer...')
     @tasksController.newOffer(taskID)
 
   newHelp: ->
+    return unless tasksController.userID()?
     taskID = @model.get('id')
     @$('#revoke-button').toggleClass('disabled')
     @$('#revoke-button').html('Unassigning task!')
     @tasksController.newHelp(taskID)
 
   deleteTask: ->
+    return unless tasksController.userID()?
     taskID = @model.get('id')
     @tasksController.deleteTask(taskID)
 
   reportTask: ->
+    return unless tasksController.userID()?
     taskID = @model.get('id')
     @$('#report-button').toggleClass('disabled')
     @$('#report-button').html('Reporting...')
@@ -84,6 +88,7 @@ class Nicely.Tasks.TaskView extends Backbone.View
     location.href = @root_path
 
   userUnlike: (event) ->
+    return unless tasksController.userID()?
     $clickedHeart = jQuery(event.currentTarget)
     task_id = $clickedHeart.data('taskId')
     $count = $clickedHeart.next().find('p')
@@ -100,6 +105,7 @@ class Nicely.Tasks.TaskView extends Backbone.View
     })
 
   userLike: (event) ->
+    return unless tasksController.userID()?
     $clickedHeart = jQuery(event.currentTarget)
     task_id = $clickedHeart.data('taskId')
     $count = $clickedHeart.next().find('p')

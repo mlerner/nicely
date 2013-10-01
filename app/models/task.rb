@@ -10,11 +10,11 @@ class Task < ActiveRecord::Base
   validates_presence_of :description, :title, :estimated_time, :start_loc
   before_save :default_values
   belongs_to :user
-  has_one :assignee
-  has_many :comments
-  has_many :offers
-  has_many :messages
-  has_many :reports
+  has_one :assignee, dependent: :destroy
+  has_many :comments, dependent: :destroy
+  has_many :offers, dependent: :destroy
+  has_many :messages, dependent: :destroy
+  has_many :reports, dependent: :destroy
 
   scope :close_to, ->(latitude, longitude, distance_in_meters = 10000) {
     where(%{

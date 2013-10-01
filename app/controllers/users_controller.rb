@@ -10,8 +10,11 @@ class UsersController < ApplicationController
     end
   end
 
-  def feedback
-    @feedback = Comment.new
+  def give_feedback
+    @user = User.find(params[:id])
+    @feedback = Comment.new(text: params[:text], commenter_id: params[:commenter_id])
+    @feedback.user = @user
+    @feedback.save
     redirect_to root_path and return
   end
 
@@ -19,6 +22,11 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @user = User.find(params[:id])
+    if params[:tab] == 'recent-help'
+      @recent_tasks = Task.joins(:assignee).where('assignees.user_id' => @user.id)
+    else
+      @recent_tasks = Task.where(user_id: @user.id).last(10)
+    end
 
     respond_to do |format|
       format.html # show.html.erb

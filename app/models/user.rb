@@ -13,7 +13,8 @@ class User < ActiveRecord::Base
                   :password_confirmation, :remember_me, :points
   has_many :offers
   has_many :tasks
-  has_many :feedback_entries, foreign_key: 'user_id', class_name: 'Comment'
+  has_many :feedback, foreign_key: 'user_id', class_name: 'Comment'
+  validates_uniqueness_of :name
 
   def default_values
     self.points ||= 0

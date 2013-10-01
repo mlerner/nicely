@@ -73,6 +73,33 @@ nav
         float: right
         text-align: left
         display: inline-block
+  .profile
+    @include container
+    color: $good-color
+    .user-tasks
+      @include span-columns(6, 9)
+      .content
+        @include span-columns(9,9)
+        padding-top: 20px
+        .feed-summary
+          .title
+            @include span-columns(5,9)
+            .liked
+              @include span-columns(2, 12)
+            .text
+              @include span-columns(10 omega, 12)
+          .details
+            @include span-columns(4 omega, 9)
+            .avatar
+              @include span-columns(3, 9)
+            .submission
+              @include span-columns(6 omega, 9)
+              .submitter
+                padding-top: 30px
+              .ago
+                display: none
+    .profile-info
+      @include span-columns(3 omega, 9)
   .offers
     @include container
     .title
@@ -162,39 +189,6 @@ nav
         padding-top: 0px
       &:last-child
         padding-bottom: 20px
-      .summary
-        padding-top: 20px
-        @include span-columns(9,9)
-        .title
-          @include span-columns(6,9)
-          .liked
-            @include span-columns(1, 12)
-          .text
-            @include span-columns(11 omega, 12)
-            h1
-              padding: 0.5em 0
-          a:hover
-            border-bottom: 3px solid $good-color
-          h2
-            padding: 0 0 0 0
-        .details
-          @include span-columns(3 omega, 9)
-          .avatar
-            @include span-columns(3, 9)
-            a > img
-              width: 80px
-              border-radius: 50%
-              overflow: hidden
-          .submission
-            @include span-columns(6 omega, 9)
-            a:hover
-              border-bottom: 3px solid $good-color
-            .submitter
-              padding-top: 20px
-            .ago
-              font-size: 12px
-              color: grey
-
   .browse
     @include container
 
@@ -204,7 +198,7 @@ nav
 
   .devise
     @include container
-    padding-top: 50px
+    padding-top: 20px
     .centered-form
       @include span-columns(4,12)
       @include squish(4,4)
@@ -414,7 +408,7 @@ nav
   color: #ff5b54
   border-color: #ff5b54
 
-.tasks, .popular, .month, .new-sort
+.submitted-tasks, .tasks, .popular, .month, .new-sort
   color: #f1c40f
   border-color: #f1c40f
 
@@ -498,6 +492,39 @@ nav
     color: $red
   h3
     padding: 0.5em 0
+
+.feed-summary
+  padding-top: 20px
+  @include span-columns(9,9)
+  .title
+    @include span-columns(6,9)
+    .liked
+      @include span-columns(1, 12)
+    .text
+      @include span-columns(11 omega, 12)
+      h1
+        padding: 0.5em 0
+    a:hover
+      border-bottom: 3px solid $good-color
+    h2
+      padding: 0 0 0 0
+  .details
+    @include span-columns(3 omega, 9)
+    .avatar
+      @include span-columns(3, 9)
+      a > img
+        width: 80px
+        border-radius: 50%
+        overflow: hidden
+    .submission
+      @include span-columns(6 omega, 9)
+      a:hover
+        border-bottom: 3px solid $good-color
+      .submitter
+        padding-top: 20px
+      .ago
+        font-size: 12px
+        color: grey
 
 @media screen and (max-width: 480px)
   .nav-links
