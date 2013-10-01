@@ -27,7 +27,7 @@ class PagesController < ApplicationController
       query = query.order("ST_Distance(ST_Transform(tasks.start_xy, 4326), ST_GeographyFromText('SRID=4326;POINT(#{geocoded_address[1]} #{geocoded_address[0]})'))")
       query.active.paginate(page: params[:page], per_page: 10)
     elsif params[:tab] == 'popular'
-      Task.top(100).paginate(page: params[:page], per_page: 10)
+      Task.active.top(100).paginate(page: params[:page], per_page: 10)
     else
       Task.active.paginate(page: params[:page], per_page: 10).order('id DESC')
     end

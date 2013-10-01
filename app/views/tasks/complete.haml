@@ -1,7 +1,7 @@
 .feedback
   %h3 Awesome! Use the form below to add feedback about your helper.
   .form
-    = form_for Comment.new, url: give_feedback_user_path(@task.user) do |f|
+    = form_for Comment.new, url: give_feedback_user_path(@task.assignee.user) do |f|
       %div
         = f.text_area :text
       %div

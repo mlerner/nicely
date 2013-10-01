@@ -2,5 +2,5 @@
   %script{type: 'text/javascript', src: 'http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false'}
 %title Goodcode
 = stylesheet_link_tag 'application', :media => 'all'
-= javascript_include_tag 'application'
+= javascript_include_tag 'application', controller.controller_name
 = csrf_meta_tags

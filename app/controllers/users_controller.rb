@@ -12,7 +12,7 @@ class UsersController < ApplicationController
 
   def give_feedback
     @user = User.find(params[:id])
-    @feedback = Comment.new(text: params[:text], commenter_id: params[:commenter_id])
+    @feedback = Comment.new(text: params[:comment][:text], commenter_id: params[:comment][:commenter_id])
     @feedback.user = @user
     @feedback.save
     redirect_to root_path and return

@@ -90,9 +90,10 @@ class TasksController < ApplicationController
   def complete
     @task = Task.find(params[:id])
     task_completer = @task.assignee.user
-    task_completer.points = task_completer.points + @task.liked_by_count
+    task_completer.points = 100
     @task.status = 1
-    if @task.save and task_completer.save
+    if @task.save && task_completer.save
+      puts task_completer.points
       render 'tasks/complete' and return
     else
       flash[:notice] =  {type: 'failure', message: "Task not completed"}

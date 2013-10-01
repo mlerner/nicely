@@ -23,6 +23,10 @@
       %b
         = @user.points
         awesome points
-    .edit
-      - if user_signed_in? && current_user.id == @user.id
+    - if user_signed_in? && current_user.id == @user.id
+      .edit
         = link_to 'Edit', edit_user_path(@user)
+    .feedback-entries
+      %h1.year.medium-padding
+        User feedback:
+      = render partial: 'users/feedback', collection: @user.feedback
