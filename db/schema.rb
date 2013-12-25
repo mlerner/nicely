@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130926151017) do
+ActiveRecord::Schema.define(:version => 20131224075818) do
 
   create_table "assignees", :force => true do |t|
     t.integer  "user_id"
@@ -34,6 +34,19 @@ ActiveRecord::Schema.define(:version => 20130926151017) do
     t.integer  "task_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "notifications", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "sender_id"
+    t.integer  "parent_id"
+    t.string   "parent_type"
+    t.date     "expiration_date"
+    t.string   "notification"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+    t.integer  "category"
+    t.datetime "read_date"
   end
 
   create_table "offers", :force => true do |t|

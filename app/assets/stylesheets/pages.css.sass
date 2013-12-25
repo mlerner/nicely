@@ -183,7 +183,19 @@ nav
             color: $good-color
             padding: 0.75em 0
 
-
+  .notifications
+    @include container
+    color: $good-color
+    .unread
+      background-color: #0ef8ff
+    .notification
+      @include span-columns(12,12)
+      height: 100px
+      .text
+        @include span-columns(9, 12)
+        text-align: center
+      .info
+        @include span-columns(3 omega, 12)
 
 
   .feed

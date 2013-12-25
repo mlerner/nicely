@@ -6,10 +6,10 @@
       %li
         = link_to 'Logout', destroy_user_session_path, class: 'bold-links', method: :delete
       %li
-        %a{href: user_path(current_user), class: 'bold-links message-nav'}
+        %a{href: user_notifications_path(current_user), class: 'bold-links message-nav'}
           .icon
           %span.count
-            0
+            = Notification.where(user_id: current_user.id, read_date: nil).count
       %li
         = link_to 'Me', user_path(current_user), class: 'bold-links'
       %li.underline

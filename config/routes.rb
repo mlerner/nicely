@@ -9,6 +9,7 @@ Nicely::Application.routes.draw do
       post 'give_feedback'
     end
     resources :feedback
+    resources :notifications
   end
 
   resources :tasks do
