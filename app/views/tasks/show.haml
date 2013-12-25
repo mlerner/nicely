@@ -7,7 +7,7 @@
     .left
       .title
         %h3.medium-padding
-          = truncate(@task.title, length: 80)
+          = truncate(strip_tags(@task.title), length: 80)
       .details
         %p.ago.h2
           Submitted
@@ -44,7 +44,7 @@
                 = "#{@task.estimated_time} minutes"
 
         %p.description{data: {p: @task.description }}
-          = @task.description
+          = strip_tags(@task.description)
         - if @task.active?
           = render partial: 'tasks/interact', locals: {task: @task}
       .comments

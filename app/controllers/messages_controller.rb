@@ -8,7 +8,7 @@ class MessagesController < ApplicationController
     PrivatePub.publish_to(
         chat_task_path(@task),
         sender: @message.sender.name,
-        message: @message.content,
+        message: ActionView::Base.full_sanitizer.sanitize(@message.content),
         time_ago: distance_of_time_in_words_to_now(@message.created_at)
     )
     render json: {success: true}

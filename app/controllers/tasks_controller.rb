@@ -1,7 +1,7 @@
 
 
 class TasksController < ApplicationController
-  before_filter :authenticate_user!, only: [:new, :edit, :update, :destroy, :complete, :chat]
+  before_filter :authenticate_user!, only: [:like, :new, :edit, :update, :destroy, :complete, :chat]
 
   # GET /tasks
   # GET /tasks.json
