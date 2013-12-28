@@ -3,8 +3,6 @@
     .refine
       %ul
         %li
-          %h3 Show:
-        %li
           %h3
             = link_to 'Submitted', user_path(@user, tab: 'submitted-tasks'), class: generate_class('submitted-tasks')
         %li
@@ -25,7 +23,7 @@
         awesome points
     - if user_signed_in? && current_user.id == @user.id
       .edit
-        = link_to 'Edit', edit_user_path(@user)
+        = link_to 'Edit Settings', edit_user_path(@user)
     .feedback-entries
       %h1.year.medium-padding
         User feedback:
