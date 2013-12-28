@@ -1,6 +1,6 @@
 .summary
   %p
-    = link_to summary.title, task_path(summary)
+    = link_to strip_tags(summary.title), task_path(summary)
   .details
     .avatar
       = link_to image_tag(gravatar_url(summary.user.email, gravatar_size)), user_path(summary.user)

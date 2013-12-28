@@ -7,7 +7,7 @@
           = feed_summary.liked_by_count + feed_summary.offers.count
     .text
       %h2
-        = link_to sanitize(feed_summary.title), task_path(feed_summary)
+        = link_to strip_tags(feed_summary.title), task_path(feed_summary)
       %h1
         = task_distance(feed_summary)
         miles away
