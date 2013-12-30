@@ -8,6 +8,9 @@
         %li
           %h3
             = link_to 'Completed', user_path(@user, tab: 'recent-help'), class: generate_class('recent-help')
+        %li
+          %h3
+            = link_to 'Feedback', user_path(@user, tab: 'user-feedback'), class: generate_class('user-feedback')
     .content
       - if @recent_tasks
         = render partial: 'tasks/feed_summary', collection: @recent_tasks, locals: {gravatar_size: '80'}
@@ -24,7 +27,3 @@
     - if user_signed_in? && current_user.id == @user.id
       .edit
         = link_to 'Edit Settings', edit_user_path(@user)
-    .feedback-entries
-      %h1.year.medium-padding
-        User feedback:
-      = render partial: 'users/feedback', collection: @user.feedback

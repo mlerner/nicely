@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   # GET /users.json
   def index
     @users = User.all
+    redirect_to root_path and return
 
     respond_to do |format|
       format.html # index.html.erb
@@ -24,6 +25,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if params[:tab] == 'recent-help'
       @recent_tasks = Task.joins(:assignee).where('assignees.user_id' => @user.id)
+    elsif params[:tab] == 'feedback'
     else
       @recent_tasks = Task.where(user_id: @user.id).last(10)
     end

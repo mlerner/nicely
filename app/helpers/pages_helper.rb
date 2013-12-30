@@ -32,7 +32,7 @@ module PagesHelper
     else
       geocoded_location = [42.4439614, -76.5018807]
     end
-    haversine_distance(geocoded_location[0], geocoded_location[1], task.start_xy.lat, task.start_xy.lon).round(2)
+    haversine_distance(geocoded_location[0], geocoded_location[1], task.start_xy.y, task.start_xy.x).round(2)
   end
 
   def tab_selected?(tab)

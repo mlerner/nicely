@@ -45,7 +45,7 @@
 
         %p.description{data: {p: @task.description }}
           = strip_tags(@task.description)
-        - if @task.active?
+        - if @task.active? && user_signed_in?
           = render partial: 'tasks/interact', locals: {task: @task}
       .comments
     .right
