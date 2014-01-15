@@ -2,6 +2,7 @@ Nicely::Application.routes.draw do
 
   devise_for :users
 
+  match 'intro' => 'intro#onboard'
   match 'browse' => 'pages#browse'
 
   resources :users do
