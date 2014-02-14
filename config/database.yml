@@ -24,21 +24,23 @@ test: &TEST
   su_username: micahlerner
   password:
 
-postgresql: &postgresql
-  adapter: postgresql
+production: &production
+  adapter: postgis
+  encoding: unicode
+  postgis_extension: postgis
+  schema_search_path: '"$user", public, postgis'
   database: <%=ENV['OPENSHIFT_APP_NAME']%>
   username: <%=ENV['OPENSHIFT_POSTGRESQL_DB_USERNAME']%>
   password: <%=ENV['OPENSHIFT_POSTGRESQL_DB_PASSWORD']%>
-  host:     <%=ENV['OPENSHIFT_POSTGRESQL_DB_HOST']%>
+  host: <%=ENV['OPENSHIFT_POSTGRESQL_DB_HOST']%>
   port:     <%=ENV['OPENSHIFT_POSTGRESQL_DB_PORT']%>
-  min_messages: ERROR
-  reconnect: false
+  pool: 5
 
 defaults: &defaults
   pool: 5
   timeout: 5000
   encoding: utf8
   <<: *<%= ENV['RAILS_DB']%>
-
+  
 cucumber:
   <<: *TEST
