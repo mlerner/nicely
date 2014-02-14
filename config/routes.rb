@@ -1,4 +1,43 @@
-RailsApp::Application.routes.draw do
+Nicely::Application.routes.draw do
+
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+  devise_scope :user do
+    get 'sign_in', :to => 'devise/sessions#new', :as => :new_user_session
+    get 'sign_out', :to => 'devise/sessions#destroy', :as => :destroy_user_session
+  end
+
+  match 'intro' => 'intro#onboard'
+  match 'browse' => 'pages#browse'
+
+  resources :users do
+    member do
+      post 'give_feedback'
+    end
+    resources :feedback
+    resources :notifications
+  end
+
+  resources :tasks do
+    resources :messages
+    resources :reports
+    resources :offers do
+      post 'revoke'
+      get  'accept'
+    end
+    member do
+      post 'delete'
+      post 'like'
+      post 'unlike'
+      post 'revoke'
+      get 'complete'
+      get 'chat'
+    end
+  end
+
+  resources :comments
+
+  root to: 'pages#index'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

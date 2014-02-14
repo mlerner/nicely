@@ -12,4 +12,10 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require_tree .
+//= require lib/underscore
+//= require lib/backbone
+//= require jquery/jquery.geocomplete
+//= require jquery/jquery.autosize.min
+//= require utils/coffee-util
+//= require private_pub
+//= require nicely/Base

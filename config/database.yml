@@ -1,14 +1,28 @@
-sqlite: &sqlite
-  adapter: sqlite3
-  database: db/<%= Rails.env %>.sqlite3
+development:
+  adapter: postgis
+  encoding: unicode
+  postgis_extension: postgis
+  schema_search_path: '"$user", public, postgis'
+  database: nicely_development
+  host: localhost
+  pool: 5
+  username: micahlerner
+  password:
+  su_username: micahlerner
+  password:
 
-mysql: &mysql
-  adapter: mysql2
-  database: "<%=ENV['OPENSHIFT_APP_NAME']%>"
-  username: "<%=ENV['OPENSHIFT_MYSQL_DB_USERNAME']%>"
-  password: "<%=ENV['OPENSHIFT_MYSQL_DB_PASSWORD']%>"
-  host:     <%=ENV['OPENSHIFT_MYSQL_DB_HOST']%>
-  port:     <%=ENV['OPENSHIFT_MYSQL_DB_PORT']%>
+test: &TEST
+  adapter: postgis
+  encoding: unicode
+  postgis_extension: postgis
+  schema_search_path: '"$user", public, postgis'
+  database: nicely_test
+  host: localhost
+  pool: 5
+  username: micahlerner
+  password:
+  su_username: micahlerner
+  password:
 
 postgresql: &postgresql
   adapter: postgresql
@@ -24,13 +38,7 @@ defaults: &defaults
   pool: 5
   timeout: 5000
   encoding: utf8
-  <<: *<%= ENV['RAILS_DB'] || "sqlite" %>
+  <<: *<%= ENV['RAILS_DB']%>
 
-development:
-  <<: *defaults
-
-test: &test
-  <<: *defaults
-
-production:
-  <<: *defaults
+cucumber:
+  <<: *TEST

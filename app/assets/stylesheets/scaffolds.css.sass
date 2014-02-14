@@ -1,0 +1,49 @@
+@import "global"
+
+p, ol, ul, td
+  font-family: inherit
+  font-size: 16px
+  line-height: 20px
+
+pre
+  background-color: #eee
+  padding: 10px
+  font-size: 11px
+
+div
+  &.field, &.actions
+    margin-bottom: 10px
+
+#notice
+  color: green
+
+.field_with_errors
+  label
+    color: red
+  textarea
+    border: $red-border
+  input
+    border: $red-border
+
+.pac-container
+  color: $good-color
+
+#error_explanation
+  width: 290px
+  border: 2px solid red
+  padding: 7px
+  padding-bottom: 0
+  margin-bottom: 20px
+  background-color: #f0f0f0
+  h2
+    text-align: left
+    font-weight: bold
+    padding: 5px 5px 5px 15px
+    font-size: 12px
+    margin: -7px
+    margin-bottom: 0px
+    background-color: #c00
+    color: #fff
+  ul li
+    font-size: 12px
+    list-style: none

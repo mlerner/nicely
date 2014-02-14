@@ -1,0 +1,564 @@
+// Place all the styles related to the Pages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import "susy"
+@import "global"
+
+.bold-links
+  line-height: 40px
+  font-size: 20px
+  color: $good-color
+  text-decoration: none
+  font-style: italic
+  font-family: "NHaasGroteskDSW01-65Md", sans-serif
+  position: relative
+  display: inline-block
+  margin: 15px 25px
+  outline: none
+  text-shadow: 0 0 1px rgba(255,255,255,0.3)
+  font-size: 1.35em
+
+.h2
+  font-size: 1.5em
+  font-weight: 400
+
+nav
+  a:focus::after, a:hover::after
+    opacity: 1
+    -webkit-transform: translateY(0px)
+    -moz-transform: translateY(0px)
+    transform: translateY(0px)
+  a::after
+    position: absolute
+    top: 100%
+    left: 0
+    width: 100%
+    height: 4px
+    background: $good-color
+    content: ''
+    opacity: 0
+    -webkit-transition: opacity 0.3s, -webkit-transform 0.3s
+    -moz-transition: opacity 0.3s, -moz-transform 0.3s
+    transition: opacity 0.3s, transform 0.3s
+    -webkit-transform: translateY(10px)
+    -moz-transform: translateY(10px)
+    transform: translateY(10px)
+
+.logo
+  font-family: "NHaasGroteskDSW01-65Md", sans-serif
+  color: $good-color
+  letter-spacing: 0
+  margin-left: 0px
+  text-decoration: none
+
+.page
+  nav.nav-bg
+    background: $bg-color
+    @include container
+    .centered-title
+      @include span-columns(12,12)
+      @include squish(4,4)
+      h3
+        color: $bg-color
+    .title
+      @include span-columns(3,12)
+      font-size: 1.5em
+      padding: 1.0em 0
+      font-weight: 600
+    ul
+      @include span-columns(6 omega,9)
+      padding: 1.4em 0
+      li
+        float: right
+        text-align: left
+        display: inline-block
+  .profile
+    @include container
+    color: $good-color
+    .user-tasks
+      @include span-columns(6, 9)
+      .content
+        @include span-columns(9,9)
+        padding-top: 20px
+        .feed-summary
+          .title
+            @include span-columns(5,9)
+            .liked
+              @include span-columns(2, 12)
+            .text
+              @include span-columns(10 omega, 12)
+          .details
+            @include span-columns(4 omega, 9)
+            .avatar
+              @include span-columns(3, 9)
+            .submission
+              @include span-columns(6 omega, 9)
+              .submitter
+                padding-top: 30px
+              .ago
+                display: none
+    .profile-info
+      @include span-columns(3 omega, 9)
+      .feedback-entries
+        @include span-columns(9,9)
+        .username
+          @include span-columns(9,9)
+        p
+          @include span-columns(9,9)
+        border-top: 1px solid $good-color
+
+  .offers
+    @include container
+    .title
+      @include span-columns(9,9)
+      h3
+        color: #ff5b54
+        padding: 0.75em 0
+    .facebook-notice
+      @include span-columns(9,9)
+    .offer
+      @include span-columns(9,9)
+      .accept
+        @include span-columns(5 omega, 9)
+        padding-top: 20px
+      .details
+        @include span-columns(4, 9)
+        color: grey
+        .avatar
+          @include span-columns(2, 9)
+          a > img
+            width: 80px
+            overflow: hidden
+        .submission
+          @include span-columns(7 omega, 9)
+          a:hover
+            border-bottom: 3px solid $good-color
+          .submitter
+            padding-top: 20px
+          .ago
+            font-size: 12px
+            color: grey
+    h3
+      color: $good-color
+
+  .feedback
+    @include container
+    h3
+      color: $good-color
+      text-align: center
+    .form
+      @include span-columns(6,12)
+      @include squish(3,3)
+      background: #ffffff
+
+  .feedback
+    textarea
+      height: 200px
+
+  .chat
+    @include container
+    .form
+      @include span-columns(12,12)
+      background: #ffffff
+      .controls
+        @include span-columns(12,12)
+        .text
+          @include span-columns(10, 12)
+        .button
+          @include span-columns(2 omega, 12)
+          height: 50px
+          margin-top: 0px
+
+      ul
+        min-height: 200px
+        max-height: 400px
+        overflow-y: scroll
+        @include span-columns(9,9)
+        list-style: none
+        li
+          color: black
+          h1
+            color: $good-color
+            padding: 0.75em 0
+
+  .notifications
+    @include container
+    color: $good-color
+    .unread
+      background-color: $faded-color
+    .notification
+      @include span-columns(12,12)
+      height: 100px
+      .text
+        @include span-columns(9, 12)
+        text-align: center
+      .info
+        @include span-columns(3 omega, 12)
+
+
+  .feed
+    @include container
+    .refine
+      @include span-columns(12,12)
+    .task-summaries
+      @include span-columns(9, 9)
+      color: $good-color
+      &:first-child
+        padding-top: 0px
+      &:last-child
+        padding-bottom: 20px
+  .browse
+    @include container
+
+  .chat
+    @include container
+
+
+  .devise
+    @include container
+    padding-top: 20px
+    padding-bottom: 20px
+    .centered-form
+      @include span-columns(4,12)
+      @include squish(4,4)
+      background-color: $bg-color
+      color: $good-color
+      border: 1px solid $good-color
+      padding: 30px
+      border-radius: 3px
+      h3
+        text-align: center
+      .signup-submit
+        width: 100%
+        margin-top: 10px
+  .form
+    background-color: $good-color
+    .page-form
+      @include container
+      padding-top: 20px
+      padding-bottom: 20px
+      .form-contents
+        @include span-columns(12,12)
+        position: relative
+        color: $good-color
+        .text
+          background-color: $bg-color
+          padding: 20px
+          @include span-columns(6,12)
+          position: relative
+        #map_container
+          @include span-columns(5 omega,12)
+          background-color: $bg-color
+          position: fixed
+          top: 138px
+          .before-location
+            position: absolute
+            top: 160px
+            margin-left: 60px
+            text-align: center
+            color: $good-color
+            z-index: 10
+            background: transparent
+          #map_canvas
+            z-index: 5
+            height: 416px
+            margin: 20px
+        h3
+          text-align: center
+
+  .task
+    height: 795px
+    .map
+      @include span-columns(9, 9)
+      height: 150px
+      background: $good-color
+      #map-canvas
+        height: 150px
+    .task-content
+      @include container
+      color: black
+      .left
+        @include span-columns(6, 9)
+        .title
+          color: $good-color
+        .details
+          @include span-columns(9,9)
+          .ago
+            @include span-columns(8 omega,9)
+            color: darkgrey
+            word-wrap: break-word
+            margin-top: 20px
+            min-height: 42px
+          .liked
+            @include span-columns(1, 9)
+          .location
+            @include span-columns(9,9)
+            margin-bottom: 24px
+            ul
+              list-style: none
+              li
+                margin-bottom: 5px
+                .field
+                  color: $good-color
+          .description
+            @include span-columns(9,9)
+          .interact
+            @include span-columns(9,9)
+          h3, p
+            word-wrap: break-word
+
+        .interact
+          height: 50px
+          ul
+            list-style: none
+            li
+              margin-right: 5px
+              display: inline
+        .comments
+          @include span-columns(6, 9)
+          height: 300px
+
+
+      .right
+        @include span-columns(3 omega, 9)
+        .share
+          ul
+            list-style: none
+            li
+              display: inline-block
+              margin: 0
+              float: left
+              a
+                display: inline-block
+                height: 64px
+                width: 64px
+                background-size: 64px 64px
+                background-position: center center
+                background-repeat: no-repeat
+                text-indent: -9999em
+
+        .nearby
+          margin-top: 20px
+          height: 300px
+          ul
+            list-style: none
+            margin: 0 0 5px
+            &:first-child
+              margin-top: 5px
+            li
+              margin: 0 -10px
+              overflow: hidden
+              padding: 5px 10px
+              position: relative
+              width: 290px
+
+
+  .content
+    .landing
+      background: $good-color
+      .text
+        @include container
+        text-align: center
+        height: 200px
+        p
+          font-size: 24px
+          font-weight: 400
+    .recent-tasks
+      @include container
+      height: 100%
+      .summary
+        @include span-columns(3, 9)
+        &:nth-child(3n)
+          @include omega
+        color: $good-color
+        padding-top: 20px
+        border-bottom: 1px solid lightgrey
+        .details
+          .avatar
+            width: 60px
+            float: left
+            a > img
+              overflow: hidden
+          .submission
+            width: 250px
+            a:hover
+              border-bottom: 3px solid $good-color
+            .ago
+              font-size: 12px
+              color: grey
+
+
+
+
+        p
+          word-wrap: break-word
+        &:nth-child(3n)
+          @include omega
+
+
+
+    // main content spans 6 of those 9 columns.
+    .main
+      @include span-columns(6,9)
+
+    // secondary content spans the final 3 (omega) of 9 columns.
+    .secondary
+      @include span-columns(3 omega,9)
+
+.pac-item
+  color: $good-color
+
+.medium-padding
+  padding: 0.75em 0
+
+.grey
+  color: darkgrey
+
+.normal-link
+  &:hover
+    border-bottom: 3px solid $good-color
+
+.new, .helpers, .top, .today
+  color: $good-color
+  border-color: $good-color
+
+.askers, .nearby, .week, .user-feedback
+  color: #ff5b54
+  border-color: #ff5b54
+
+.submitted-tasks, .tasks, .popular, .month, .new-sort
+  color: #f1c40f
+  border-color: #f1c40f
+
+.selected
+  border-bottom: 3px solid
+
+.year
+  color: #27ae60
+  border-color: #27ae60
+
+.refine
+  @include span-columns(12,12)
+.sort-by
+  @include span-columns(6,12)
+.timespan
+  @include span-columns(6 omega,12)
+.refine, .sort-by, .timespan, .feedback-entries
+  color: $good-color
+  h3
+    padding: 0.75em 0
+  ul
+    list-style: none
+    li
+      margin: 0 30px 0 0
+      text-align: right
+      float: left
+      display: inline-block
+      a
+        .selected, &:hover
+          border-bottom: 3px solid
+.pagination-container
+  @include container
+
+.pagination
+  @include span-columns(12,12)
+  margin-top: 50px
+  text-align: center
+  font-size: 1.75em
+  font-weight: 600
+  padding: 0.75em 0
+  .current
+    color: $good-color
+    border-color: $good-color
+    border-bottom: 3px solid
+
+.red-empty-heart
+  background-image: url(/assets/red_heart_empty.png)
+
+.red-full-heart
+  background-image: url(/assets/red_heart_full.png)
+
+.in-progress
+  color: #2ecc71
+
+.liked
+  .icon
+    width: 100%
+    margin-left: 5px
+    cursor: pointer
+    background-repeat: no-repeat
+    height: 32px
+    width: 32px
+
+  .count
+    font-size: 0.75em
+    margin-top: 5px
+    text-align: center
+    width: 42px
+
+.grey
+  color: darkgrey
+
+.notice
+  @include span-columns(9,9)
+  text-align: center
+  .message
+    @include span-columns(9,9)
+  .success
+    color: $green
+  .failure
+    color: $red
+  h3
+    padding: 0.5em 0
+
+.message-nav
+  .icon
+    width: 32px
+    margin-top: 3px
+    height: 32px
+    background-image: url(/assets/message.png)
+    background-repeat: no-repeat
+    float: left
+  .count
+    margin-left: 10px
+    float: left
+    height: 32px
+
+
+.feed-summary
+  padding-top: 20px
+  @include span-columns(9,9)
+  .title
+    @include span-columns(6,9)
+    .liked
+      @include span-columns(1, 12)
+    .text
+      @include span-columns(11 omega, 12)
+      h1
+        padding: 0.5em 0
+    a:hover
+      border-bottom: 3px solid $good-color
+    h2
+      padding: 0 0 0 0
+  .details
+    @include span-columns(3 omega, 9)
+    .avatar
+      @include span-columns(3, 9)
+      a > img
+        width: 80px
+        overflow: hidden
+    .submission
+      @include span-columns(6 omega, 9)
+      a:hover
+        border-bottom: 3px solid $good-color
+      .submitter
+        padding-top: 20px
+      .ago
+        font-size: 12px
+        color: grey
+
+@media screen and (max-width: 480px)
+  .nav-links
+    display: none !important
+

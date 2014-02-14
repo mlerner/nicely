@@ -1,0 +1,57 @@
+.form
+  .page-form
+    .form-contents
+      .text
+        %h3 Ask for a kind favor
+        = form_for(@task, :url => tasks_path) do |f|
+          - if @task.errors.any?
+            #error_explanation
+              %h2
+                = pluralize(@task.errors.count, 'error')
+                kept this task from being saved
+              %ul
+                - @task.errors.full_messages.each do |message|
+                  %li
+                    = message
+          %div
+            = f.label :title
+            %br/
+            = f.text_field :title, autofocus: true, maxlength: 244
+          %div
+            = f.label :description
+            %br/
+            = f.text_area :description, maxlength: 244
+          %div
+            = f.label :start_loc, 'Start Location'
+            %br/
+            = f.text_field :start_loc
+          %div
+            = f.label :start_time, 'I need task completed by:'
+            %br/
+            = f.datetime_select :start_time, ampm: true
+          %div
+            = f.label :end_loc, 'End Location (Optional)'
+            %br/
+            = f.text_field :end_loc
+          %div
+            = f.label :estimated_time, 'Estimated Time'
+            %br/
+            .inline
+              = f.number_field :estimated_time
+            %p.inline-label minutes
+          %div
+            = f.hidden_field :start_xy
+            = f.hidden_field :end_xy
+
+          %div= f.submit "Submit", class: 'button signup-button'
+          %div= link_to 'Cancel', root_path, class: 'button report signup-button no-padding', id: 'cancel-button'
+      #map_container
+        %h3.before-location Enter a Start or End location
+        #map_canvas
+
+= content_for :javascript do
+  = javascript_include_tag 'nicely/tasks/manifest.js'
+  :javascript
+    jQuery(document).ready(function($){
+      var taskForm = new Nicely.Tasks.TaskForm({el: '.page-form'});
+    });

@@ -1,0 +1,12 @@
+%html{ lang: 'en'}
+  = render partial: 'layouts/header'
+  %body
+    .page
+      - if devise_view?
+        = render partial: 'layouts/devise'
+      - else
+        = render partial: 'pages/body_content'
+    - content_for?(:footer) ? yield(:footer) : render(:partial => 'pages/footer')
+
+    = yield :javascript
+

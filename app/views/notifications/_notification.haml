@@ -1,0 +1,6 @@
+.notification{class: ("unread" unless notification.read_date?)}
+  %h2.text
+    = notification.notification
+  %h2.info
+    = time_ago_in_words(notification.created_at)
+    ago

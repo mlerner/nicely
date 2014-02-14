@@ -6,6 +6,8 @@
 
 # Ignore bundler config
 /.bundle
+/.idea
+*.DS_STORE
 
 # Ignore the default SQLite database.
 /db/*.sqlite3
@@ -16,3 +18,7 @@ dump.rdb
 /log/*.log
 /tmp
 .project
+
+*.un~
+*.swp
+*.rdb

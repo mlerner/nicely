@@ -1,0 +1,23 @@
+%nav.nav-bg
+  .title
+    = link_to 'Nicely', root_path, class: 'logo bold-links'
+  %ul.nav-links
+    - if user_signed_in?
+      %li
+        = link_to 'Logout', destroy_user_session_path, class: 'bold-links'
+      %li
+        %a{href: user_notifications_path(current_user), class: 'bold-links message-nav'}
+          .icon
+          %span.count
+            = Notification.where(user_id: current_user.id, read_date: nil).count
+      %li
+        = link_to 'Me', user_path(current_user), class: 'bold-links'
+      %li.underline
+        = link_to 'New Task', new_task_path, class: 'bold-links'
+    - else
+      %li
+        = link_to 'Login', new_user_session_path, class: 'bold-links'
+    %li
+      = link_to 'Search', root_path, class: 'bold-links'
+
+

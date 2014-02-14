@@ -1,6 +1,7 @@
 require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
+require 'active_record/connection_adapters/postgis_adapter/railtie'
 
 if defined?(Bundler)
   # If you precompile assets before deploying to production, use this line
@@ -9,7 +10,7 @@ if defined?(Bundler)
   # Bundler.require(:default, :assets, Rails.env)
 end
 
-module RailsApp
+module Nicely
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
@@ -55,8 +56,14 @@ module RailsApp
 
     # Enable the asset pipeline
     config.assets.enabled = true
+    config.assets.initialize_on_precompile = false
+    config.sass.preferred_syntax = :sass
+
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
   end
 end
+
+require "#{Rails.root}/lib/rgeo"
+require "rgeo/geo_json"
