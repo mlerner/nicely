@@ -5,10 +5,14 @@ gem 'rails', '3.2.11'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
+gem 'rgeo'
+gem 'activerecord-postgis-adapter'
+gem  'rgeo-geojson'
+gem 'pg'
 
 gem 'haml-rails'
 gem 'susy'
-gem 'rgeo'
+
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -28,9 +32,6 @@ gem 'compass', '>= 0.12.2'
 gem 'compass-rails', '>= 1.0.3'
 gem 'jquery-rails'
 gem 'devise'
-gem 'pg'
-gem 'activerecord-postgis-adapter'
-gem  'rgeo-geojson'
 gem  'will_paginate', '~> 3.0'
 gem 'geocoder'
 gem 'recommendable'
