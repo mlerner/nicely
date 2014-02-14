@@ -4,7 +4,7 @@
   %ul.nav-links
     - if user_signed_in?
       %li
-        = link_to 'Logout', destroy_user_session_path, class: 'bold-links', method: :delete
+        = link_to 'Logout', destroy_user_session_path, class: 'bold-links'
       %li
         %a{href: user_notifications_path(current_user), class: 'bold-links message-nav'}
           .icon
