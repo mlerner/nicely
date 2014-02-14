@@ -1,0 +1,19 @@
+.offer
+  .details
+    .avatar
+      = link_to image_tag(gravatar_url(offer.user.email, gravatar_size)), user_path(offer.user)
+    .submission
+      .submitter
+        %span
+          Submitted by
+          = link_to offer.user.display_name, user_path(offer.user)
+        %p.ago
+          Offer created
+          = distance_of_time_in_words_to_now(offer.created_at)
+          ago
+  - if current_user.id == offer.task.user.id && !offer.task.assignee
+    .accept
+      =  link_to 'Accept Offer', task_offer_accept_path(offer.task, offer), class: 'button-medium active'
+  - if offer.task.assignee && offer.task.assignee.user.id == offer.user.id
+    .accept
+      Assigned

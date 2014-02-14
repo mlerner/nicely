@@ -1,0 +1,45 @@
+.browse
+  .refine
+    %ul
+      %li
+        %h3 Show:
+      %li
+        %h3
+          = link_to 'Helpers', browse_path(tab: 'helpers'), class: generate_class('helpers')
+      %li
+        %h3
+          = link_to 'Askers', browse_path(tab: 'askers'), class: generate_class('askers')
+      %li
+        %h3
+          = link_to 'Tasks', browse_path(tab: 'tasks'), class: generate_class('tasks')
+  .sort-by
+    %ul
+      %li
+        %h1 Sort by:
+      %li
+        %h1
+          = link_to 'Top', browse_path(tab: current_tab, sort: 'top'), class: generate_class('top')
+      %li
+        %h1
+          = link_to 'Recent', browse_path(tab: current_tab, sort: 'recent'), class: generate_class('recent')
+      %li
+        %h1
+          = link_to 'New', browse_path(tab: current_tab, sort: 'new'), class: generate_class('new-sort')
+  .timespan
+    %ul
+      %li
+        %h1 Timespan:
+      %li
+        %h1
+          = link_to 'today', browse_path(tab: current_tab, sort: current_sort_order, time: 'today'), class: generate_class('today')
+      %li
+        %h1
+          = link_to 'week', browse_path(tab: current_tab, sort: current_sort_order, time: 'week'), class: generate_class('week')
+      %li
+        %h1
+          = link_to 'month', browse_path(tab: current_tab, sort: current_sort_order, time: 'month'), class: generate_class('month')
+      %li
+        %h1
+          = link_to 'year', browse_path(tab: current_tab, sort: current_sort_order, time: 'year'), class: generate_class('year')
+
+

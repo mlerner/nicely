@@ -1,0 +1,30 @@
+// Place all the styles related to the Intro controller here.
+// They will automatically be included in application.css.
+// You can use Sass here: http://sass-lang.com/
+@import "susy"
+@import "global"
+
+.current-step
+  color: $good-color
+  border-color: $good-color
+  border-bottom: 3px solid
+
+.inactive-step
+  color: $faded-color
+
+.intro
+  @include container
+  .stages
+    @include span-columns(9, 9)
+    li
+      @include span-columns(3,9)
+      &:nth-child(3n)
+        @include omega
+      .h3
+        padding: 1.0em 0
+      .number
+        float: left
+      .detail
+        padding-left: 20px
+        float: left
+

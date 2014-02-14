@@ -1,0 +1,10 @@
+%li
+  %h1
+    = message.sender.display_name
+    %span.grey
+      said
+      = distance_of_time_in_words_to_now(message.created_at)
+      ago
+
+  %p
+    = message.content

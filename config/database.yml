@@ -1,0 +1,28 @@
+development:
+  adapter: postgis
+  encoding: unicode
+  postgis_extension: postgis
+  schema_search_path: '"$user", public, postgis'
+  database: nicely_development
+  host: localhost
+  pool: 5
+  username: micahlerner
+  password:
+  su_username: micahlerner
+  password:
+
+test: &TEST
+  adapter: postgis
+  encoding: unicode
+  postgis_extension: postgis
+  schema_search_path: '"$user", public, postgis'
+  database: nicely_test
+  host: localhost
+  pool: 5
+  username: micahlerner
+  password:
+  su_username: micahlerner
+  password:
+
+cucumber:
+  <<: *TEST

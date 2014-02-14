@@ -1,0 +1,26 @@
+.feed-summary
+  .title
+    .liked
+      .icon{class: liked(feed_summary), data: {task_id: feed_summary.id} }
+      .count
+        %p{data: {count: feed_summary.liked_by_count + feed_summary.offers.count} }
+          = feed_summary.liked_by_count + feed_summary.offers.count
+    .text
+      %h2
+        = link_to strip_tags(feed_summary.title), task_path(feed_summary)
+      %h1
+        = task_distance(feed_summary)
+        miles away
+  .details
+    .avatar
+      = link_to image_tag(gravatar_url(feed_summary.user.email, gravatar_size)), user_path(feed_summary.user)
+    .submission
+      .submitter
+        %span
+          Submitted by
+          = link_to feed_summary.user.display_name, user_path(feed_summary.user)
+        %p.ago
+          Created
+          = distance_of_time_in_words_to_now(feed_summary.created_at)
+          ago
+

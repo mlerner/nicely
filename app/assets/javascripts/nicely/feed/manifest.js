@@ -1,0 +1,1 @@
+//= require nicely/feed/FeedView

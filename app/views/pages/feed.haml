@@ -1,0 +1,30 @@
+.feed
+  .refine
+    %ul
+      %li
+        %h3 Show:
+      %li
+        %h3
+          = link_to 'New', root_path(tab: 'new'), class: generate_class('new')
+      %li
+        %h3
+          = link_to 'Nearby', root_path(tab: 'nearby'), class: generate_class('nearby')
+      %li
+        %h3
+          = link_to 'Popular ', root_path(tab: 'popular'), class: generate_class('popular')
+  .task-summaries
+    = render partial: 'tasks/feed_summary', collection: @recent_tasks, locals: {gravatar_size: '80'}
+
+  .pagination-container
+    = will_paginate @recent_tasks
+
+= content_for :javascript do
+  = javascript_include_tag 'nicely/feed/manifest.js'
+  :javascript
+    jQuery(document).ready(function($){
+
+      var feedView = new Nicely.Feed.FeedView(#{current_user.id}, {
+        el: '.page'
+      });
+
+    });

@@ -1,0 +1,34 @@
+= subscribe_to chat_task_path(@task)
+%script#message-template{type: 'text/template'}
+  %li
+    %h1
+      {{ name }}
+      %span.grey
+        said
+        {{ time_ago }}
+        ago
+
+    %p
+      {{ content }}
+.chat
+  .form
+    %ul.messages
+      - if @task.messages
+        = render partial: 'tasks/message', collection: @task.messages
+    = form_for [@task, @message], remote: true do |f|
+      %div.controls
+        = f.text_area :content, class: 'text'
+        = f.submit "Submit", class: 'button signup-button'
+      %div
+        = f.hidden_field :sender_id, value: current_user.id
+
+= content_for :javascript do
+  = javascript_include_tag 'nicely/tasks/TaskChatView.js'
+
+= content_for :javascript do
+  :javascript
+    jQuery(document).ready(function($){
+      var taskChatView = new Nicely.Tasks.TaskChatView("#{chat_task_path(@task)}", {el: '.chat'});
+    });
+
+

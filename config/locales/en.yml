@@ -1,0 +1,7 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+en:
+  notifications:
+    task_assigned: "Your offer to help %{task_owner} on a task was accepted!"
+    offer_extended: "Someone offered to help with %{task_name}"
