@@ -9,6 +9,8 @@
 
 # Ignore the default SQLite database.
 /db/*.sqlite3
+dump.rdb
+/.idea
 
 # Ignore all logfiles and tempfiles.
 /log/*.log
