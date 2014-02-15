@@ -16,6 +16,9 @@
 # If there is no support for user-defined environment variables
 # set the RAILS_DB using export.
 #
+
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/rh/postgresql92/root/usr/lib64/
+
 if ! [ "$(type -t set_env_var)" == "function" ]; then
   if [ ! -z "$OPENSHIFT_POSTGRESQL_DB_HOST" ]; then
     export RAILS_DB="postgresql"
