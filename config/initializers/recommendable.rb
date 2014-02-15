@@ -1,8 +1,13 @@
 require 'redis'
+if Rails.env.production?
+  REDIS = Redis.new(path: "#{ENV['OPENSHIFT_GEAR_DIR']}tmp/redis.sock")
+else
+  REDIS = Redis.new(:host => 'localhost', :port => 6379, :db => 0)
+end
 
 Recommendable.configure do |config|
   # Recommendable's connection to Redis
-  config.redis = Redis.new(:host => 'localhost', :port => 6379, :db => 0)
+  config.redis = REDIS
 
   # A prefix for all keys Recommendable uses
   config.redis_namespace = :recommendable
