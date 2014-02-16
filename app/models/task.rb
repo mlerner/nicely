@@ -4,6 +4,10 @@ class Task < ActiveRecord::Base
   self.table_name = 'tasks'
   self.rgeo_factory_generator = RGeo::Geos.factory_generator(srid: 4326)
   RGeo::ActiveRecord::GeometryMixin.set_json_generator(:geojson)
+  set_rgeo_factory_for_column(:start_xy,
+                              self.rgeo_factory_generator)
+  set_rgeo_factory_for_column(:end_xy,
+                              self.rgeo_factory_generator)
   attr_accessible :description, :status, :title,
                   :start_time, :start_loc, :end_loc,
                   :estimated_time, :start_xy, :end_xy
