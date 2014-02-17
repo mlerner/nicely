@@ -371,7 +371,7 @@
       }, this));
       if (this.options.tag.length > 0){
         var taggedInput = jQuery('#task_' + this.options.tag + '_xy');
-        taggedInput.val("POINT(" + data.lng + " " + data.lat + ")");
+        taggedInput.val("POINT (" + data.lng + " " + data.lat + ")");
       }
 
 
