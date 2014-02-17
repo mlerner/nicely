@@ -1,3 +1,12 @@
+GIT
+  remote: https://github.com/getsentry/raven-ruby.git
+  revision: 2d03001ae655b4a19214aceb7e0d041b7e9185cb
+  specs:
+    sentry-raven (0.7.1)
+      faraday (>= 0.7.6)
+      hashie (>= 1.1.0)
+      uuidtools
+
 GEM
   remote: http://mirror1.prod.rhcloud.com/mirror/ruby/
   remote: https://rubygems.org/
@@ -194,6 +203,7 @@ GEM
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
     underscore-rails (1.4.4)
+    uuidtools (2.1.4)
     warden (1.2.1)
       rack (>= 1.0)
     websocket-driver (0.3.0)
@@ -221,6 +231,7 @@ DEPENDENCIES
   rgeo
   rgeo-geojson
   sass-rails (~> 3.2.3)
+  sentry-raven!
   susy
   thin
   uglifier (>= 1.0.3)
