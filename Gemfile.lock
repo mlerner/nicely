@@ -110,6 +110,7 @@ GEM
     mime-types (1.23)
     multi_json (1.7.7)
     multipart-post (1.2.0)
+    newrelic_rpm (3.7.2.192)
     oauth2 (0.8.1)
       faraday (~> 0.8)
       httpauth (~> 0.1)
@@ -211,6 +212,7 @@ DEPENDENCIES
   geocoder
   haml-rails
   jquery-rails
+  newrelic_rpm
   omniauth-facebook
   pg
   private_pub
