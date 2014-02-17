@@ -1,6 +1,7 @@
 require 'redis'
 if Rails.env.production?
-  REDIS = Redis.new(path: "#{ENV['OPENSHIFT_GEAR_DIR']}tmp/redis.sock")
+  uri = URI.parse(ENV["REDISTOGO_URL"])
+  REDIS = Redis.new(:host => uri.host, :port => uri.port, :password => uri.password)
 else
   REDIS = Redis.new(:host => 'localhost', :port => 6379, :db => 0)
 end

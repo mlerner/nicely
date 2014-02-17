@@ -10,6 +10,8 @@ if defined?(Bundler)
   # Bundler.require(:default, :assets, Rails.env)
 end
 
+ENV['REDISTOGO_URL'] = "redis://redistogo:cca6cc789c094b9d24fdaf8ddb3cc91b@pearlfish.redistogo.com:9740"
+
 module Nicely
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
