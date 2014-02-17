@@ -23,7 +23,7 @@ class Task < ActiveRecord::Base
   scope :close_to, ->(latitude, longitude, distance_in_meters = 10000) {
     where(%{
       ST_DWithin(
-        ST_Transform(tasks.start_xy, 4326),
+        tasks.start_xy,
         ST_GeographyFromText('SRID=4326;POINT(%f %f)'),
         %d
       )
