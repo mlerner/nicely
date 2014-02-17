@@ -56,12 +56,6 @@ ActiveRecord::Schema.define(:version => 20140115021656) do
     t.integer  "task_id"
   end
 
-  create_table "prelaunch_subscribers", :force => true do |t|
-    t.string   "email"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
   create_table "reports", :force => true do |t|
     t.integer  "user_id"
     t.integer  "task_id"
@@ -73,11 +67,11 @@ ActiveRecord::Schema.define(:version => 20140115021656) do
     t.string   "title"
     t.integer  "status"
     t.string   "description"
-    t.datetime "created_at",                                                 :null => false
-    t.datetime "updated_at",                                                 :null => false
+    t.spatial  "start_xy",       :limit => {:srid=>4326, :type=>"point", :geographic=>true}
+    t.spatial  "end_xy",         :limit => {:srid=>4326, :type=>"point", :geographic=>true}
+    t.datetime "created_at",                                                                 :null => false
+    t.datetime "updated_at",                                                                 :null => false
     t.integer  "user_id"
-    t.spatial  "start_xy",       :limit => {:srid=>4326, :type=>"geometry"}
-    t.spatial  "end_xy",         :limit => {:srid=>4326, :type=>"geometry"}
     t.string   "start_loc"
     t.string   "end_loc"
     t.datetime "start_time"
