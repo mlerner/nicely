@@ -37,6 +37,7 @@ gem 'recommendable'
 gem 'private_pub'
 gem 'thin'
 gem 'newrelic_rpm'
+gem "sentry-raven", :git => "https://github.com/getsentry/raven-ruby.git"
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
