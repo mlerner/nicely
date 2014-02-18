@@ -41,6 +41,15 @@ class Task < ActiveRecord::Base
     )
   }
 
+  after_save do
+    if deleted_at.nil?
+      self.index.store self
+    else
+      self.index.remove self
+    end
+  end
+
+
   def default_values
     self.status ||= 0
     self.start_loc ||= 'None'

@@ -39,6 +39,7 @@ gem 'thin'
 gem 'newrelic_rpm'
 gem "sentry-raven", :git => "https://github.com/getsentry/raven-ruby.git"
 gem 'tire'
+gem 'paranoia', '~> 1.0'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
