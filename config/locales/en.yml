@@ -3,5 +3,5 @@
 
 en:
   notifications:
-    task_assigned: "Your offer to help %{task_owner} on a task was accepted!"
-    offer_extended: "Someone offered to help with %{task_name}"
+    task_assigned_html: 'Your offer to help <a href=%{task_owner_path}>%{task_owner}</a> with <a href=%{task_path}>a task</a> was accepted!'
+    offer_extended_html: 'Someone offered to help with <a href=%{task_path}>%{task_name}</a>.'

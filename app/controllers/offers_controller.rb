@@ -10,7 +10,9 @@ class OffersController < ApplicationController
     offer_received = Notification.new(
         sender: @offer.user,
         user: @task.user,
-        notification: "Your task received an offer",
+        notification: t('notifications.offer_extended_html',
+                        task_name: @task.title,
+                        task_path: task_path(@task)),
         expiration_date: Time.now + 3.days,
         category: 'OFFER_RECEIVED'
     )
@@ -33,7 +35,10 @@ class OffersController < ApplicationController
     offer_accepted = Notification.new(
         sender: @task.user,
         user: @offer.user,
-        notification: "Your offer on task was accepted",
+        notification: t('notifications.task_assigned_html',
+                        task_owner: @task.user.display_name,
+                        task_owner_path: user_path(@task.user),
+                        task_path: task_path(@task)),
         expiration_date: Time.now + 3.days,
         category: 'OFFER_ACCEPTED'
     )
