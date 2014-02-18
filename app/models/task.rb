@@ -13,7 +13,8 @@ class Task < ActiveRecord::Base
                               self.rgeo_factory_generator)
   attr_accessible :description, :status, :title,
                   :start_time, :start_loc, :end_loc,
-                  :estimated_time, :start_xy, :end_xy
+                  :estimated_time, :start_xy, :end_xy,
+                  :points
   validates_presence_of :description, :title, :estimated_time, :start_loc
   before_save :default_values
   belongs_to :user
