@@ -1,6 +1,9 @@
 class Task < ActiveRecord::Base
   TASK_PER_PAGE = 10
   ACTIVE_TASK = 0
+
+  include Tire::Model::Search
+  include Tire::Model::Callbacks
   self.table_name = 'tasks'
   self.rgeo_factory_generator = RGeo::Geos.factory_generator(srid: 4326)
   RGeo::ActiveRecord::GeometryMixin.set_json_generator(:geojson)

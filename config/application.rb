@@ -11,6 +11,7 @@ if defined?(Bundler)
 end
 
 ENV['REDISTOGO_URL'] = "redis://redistogo:cca6cc789c094b9d24fdaf8ddb3cc91b@pearlfish.redistogo.com:9740"
+ENV['ELASTIC_SEARCH_URL'] = "search-nicelyapp.rhcloud.com"
 
 # Development FB App ID
 ENV['DEVELOPMENT_APP_ID'] = "518609361590177"

@@ -12,17 +12,23 @@ class PagesController < ApplicationController
   def feed
 
   end
+
   def browse
     render template: 'pages/browse'
   end
 
   def search
+    @paginated_tasks = Task.search(load: true, page: (params[:page] || 1)) do
+      query             { string 'love' }
+      sort              { by     :created_at, 'desc' }
+    end
+    puts @paginated_tasks
     render template: 'pages/search'
   end
 
   def get_feed_content(params)
     if params[:tab] == 'nearby'
-      geocoded_address = get_geocoded_address
+      geocoded_address = get_geocoded_address()
       query = Task.close_to(geocoded_address[0], geocoded_address[1])
       query = query.order("ST_Distance(tasks.start_xy, ST_GeographyFromText('SRID=4326;POINT(#{geocoded_address[1]} #{geocoded_address[0]})'))")
       query.active.paginate(page: params[:page], per_page: 10)

@@ -1,0 +1,15 @@
+.feed
+  .task-summaries
+    - if @paginated_tasks
+      = render partial: 'tasks/feed_summary', collection: @paginated_tasks, locals: {gravatar_size: '80'}
+
+= content_for :javascript do
+  = javascript_include_tag 'nicely/feed/manifest.js'
+  :javascript
+    jQuery(document).ready(function($){
+
+      var feedView = new Nicely.Feed.FeedView(#{current_user.id}, {
+        el: '.page'
+      });
+
+    });

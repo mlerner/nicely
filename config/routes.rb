@@ -8,6 +8,7 @@ Nicely::Application.routes.draw do
 
   match 'intro' => 'intro#onboard'
   match 'browse' => 'pages#browse'
+  match 'search' => 'pages#search'
 
   resources :users do
     member do
