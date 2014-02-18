@@ -12,6 +12,14 @@ end
 
 ENV['REDISTOGO_URL'] = "redis://redistogo:cca6cc789c094b9d24fdaf8ddb3cc91b@pearlfish.redistogo.com:9740"
 
+# Development FB App ID
+ENV['DEVELOPMENT_APP_ID'] = "518609361590177"
+ENV['DEVELOPMENT_APP_SECRET'] = "c5d27d0df0832bedbef853099921855e"
+
+# Production FB App ID
+ENV['PRODUCTION_APP_ID'] = "1426011500969803"
+ENV['PRODUCTION_APP_SECRET'] = "e168cb03fed5060412161b3a161e02be"
+
 module Nicely
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.

@@ -1,5 +1,15 @@
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
+
+if Rails.env == 'development' || Rails.env == 'test'
+  APP_ID = ENV['DEVELOPMENT_APP_ID']
+  APP_SECRET = ENV['DEVELOPMENT_APP_SECRET']
+else
+  # Production
+  APP_ID = ENV['PRODUCTION_APP_ID']
+  APP_SECRET = ENV['PRODUCTION_APP_SECRET']
+end
+
 Devise.setup do |config|
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
@@ -239,5 +249,5 @@ Devise.setup do |config|
   # config.omniauth_path_prefix = "/my_engine/users/auth"
   require "omniauth-facebook"
   OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE if Rails.env.development?
-  config.omniauth :facebook, "1426011500969803", "e168cb03fed5060412161b3a161e02be"
+  config.omniauth :facebook, APP_ID, APP_SECRET
 end
