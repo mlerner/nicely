@@ -90,7 +90,7 @@ class TasksController < ApplicationController
   def complete
     @task = Task.find(params[:id])
     task_completer = @task.assignee.user
-    task_completer.points = 100
+    task_completer.points += @task.liked_by_count + @task.points
     @task.status = 1
     if @task.save && task_completer.save
       puts task_completer.points

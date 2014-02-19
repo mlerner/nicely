@@ -53,6 +53,7 @@ class Task < ActiveRecord::Base
 
   def default_values
     self.status ||= 0
+    self.points ||= 1
     self.start_loc ||= 'None'
     self.end_loc ||= 'None'
   end
