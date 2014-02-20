@@ -18,11 +18,11 @@ class PagesController < ApplicationController
   end
 
   def search
-    @paginated_tasks = Task.search(load: true, page: (params[:page] || 1)) do
-      query             { string 'love' }
-      sort              { by     :created_at, 'desc' }
+    if params[:q]
+      @paginated_tasks = Task.search(query: params[:q], load: true, page: (params[:page] || 1)) do
+        sort              { by     :created_at, 'desc' }
+      end
     end
-    puts @paginated_tasks
     render template: 'pages/search'
   end
 

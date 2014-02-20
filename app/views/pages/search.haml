@@ -1,7 +1,17 @@
 .feed
+  .search-box
+    = form_tag("/search", method: "get") do
+      = label_tag(:q, "Search for:")
+      = text_field_tag(:q, params[:q])
+      = submit_tag("Search", class: 'button signup-button')
+
   .task-summaries
     - if @paginated_tasks
       = render partial: 'tasks/feed_summary', collection: @paginated_tasks, locals: {gravatar_size: '80'}
+
+  .pagination-container
+    -if @paginated_tasks
+      = will_paginate @paginated_tasks
 
 = content_for :javascript do
   = javascript_include_tag 'nicely/feed/manifest.js'
