@@ -5,6 +5,6 @@ test:
   server: "http://localhost:9292/faye"
   secret_token: "secret"
 production:
-  server: "http://example.com/faye"
+  server: "http://<%= ENV['OPENSHIFT_APP_DNS'] %>/faye"
   secret_token: "d61a564ea3152b08013c7abcac3ac67998ef356cfbc5e8739513a782fc080dce"
   signature_expiration: 3600 # one hour
