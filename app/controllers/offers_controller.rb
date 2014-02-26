@@ -43,9 +43,9 @@ class OffersController < ApplicationController
         category: 'OFFER_ACCEPTED'
     )
     if assigned_to.save && @task.save && offer_accepted.save
-      flash[:notice] = {type: 'success', message: "Task assigned!"}
+      flash[:notice] = {type: "success", message: "Task assigned!"}
     else
-      flash[:notice] = {type: 'failure', message: "Task not assigned!"}
+      flash[:notice] = {type: "failure", message: "Task not assigned!"}
     end
     redirect_to task_path(@task) and return
   end
