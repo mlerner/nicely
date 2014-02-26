@@ -1,5 +1,7 @@
 require 'will_paginate/array'
 class PagesController < ApplicationController
+  before_filter :authenticate_user!, only: [:search, :browse]
+
   def index
     if user_signed_in?
       @recent_tasks = get_feed_content(params)
