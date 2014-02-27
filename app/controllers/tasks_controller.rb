@@ -96,7 +96,7 @@ class TasksController < ApplicationController
       puts task_completer.points
       render 'tasks/complete' and return
     else
-      flash[:notice] =  {type: 'failure', message: "Task not completed"}
+      flash[:notice] =  {type: "failure", message: "Task not completed"}
       redirect_to task_path(@task) unless @task.is_owner?(current_user)
     end
   end
